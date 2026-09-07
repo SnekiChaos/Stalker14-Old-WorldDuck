@@ -1,0 +1,37 @@
+﻿# Bunkers and or underground areas
+# Only T3 for now but may need more in the future
+
+# T3
+- type: entity
+  id: MutantSpawnerBunkerT3Base
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, Mixed, Burer, Bloodsucker, T3
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantBloodsucker
+        - STMutantBurer
+      restricted:
+        - MobMutantBloodsucker
+        - STMutantBurer
+        
+- type: entity
+  id: MutantSpawnerBunkerT3_1_50
+  parent: MutantSpawnerBunkerT3Base
+  name: bunker mutant spawner T3 (1, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerBunkerT3_1_75
+  parent: MutantSpawnerBunkerT3Base
+  name: bunker mutant spawner T3 (1, 75%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.75

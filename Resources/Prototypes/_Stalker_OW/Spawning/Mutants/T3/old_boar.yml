@@ -1,0 +1,96 @@
+﻿# Old Boars
+
+- type: entity
+  id: MutantSpawnerOldBoarBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T3, Old Boar
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantOldBoar
+      restricted:
+        - MobMutantOldBoar
+      
+# General use
+- type: entity
+  id: MutantSpawnerOldBoar_1to2_10
+  parent: MutantSpawnerOldBoarBase
+  name: old boar spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerOldBoar_1to2_25
+  parent: MutantSpawnerOldBoarBase
+  name: old boar spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerOldBoar_1to2_50
+  parent: MutantSpawnerOldBoarBase
+  name: old boar spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerOldBoar_1to2_75
+  parent: MutantSpawnerOldBoarBase
+  name: old boar spawner (1-2, 75%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.75
+
+- type: entity
+  id: MutantSpawnerOldBoar_1to2_100
+  parent: MutantSpawnerOldBoarBase
+  name: old boar spawner (1-2, 100%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 1
+
+# High density & dangerous area      
+- type: entity
+  id: MutantSpawnerOldBoar_1to4_25
+  parent: MutantSpawnerOldBoarBase
+  name: old boar spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerOldBoar_1to4_50
+  parent: MutantSpawnerOldBoarBase
+  name: old boar spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerOldBoar_1to2_01
+  parent: MutantSpawnerOldBoarBase
+  name: old boar spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

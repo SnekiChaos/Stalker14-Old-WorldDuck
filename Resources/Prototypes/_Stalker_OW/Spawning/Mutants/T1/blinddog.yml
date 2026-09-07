@@ -1,0 +1,81 @@
+﻿# Blind Dogs
+
+- type: entity
+  id: MutantSpawnerBlindDogBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T1, Blind Dog
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantBlindDogRed
+        - MobMutantBlindDogTall
+        - MobMutantBlindDogSmall
+      restricted:
+        - MobMutantBlindDogRed
+        - MobMutantBlindDogTall
+        - MobMutantBlindDogSmall
+      cooldown: 900 # 15 minutes
+
+# General use
+- type: entity
+  id: MutantSpawnerBlindDog_1to2_10
+  parent: MutantSpawnerBlindDogBase
+  name: blind dog spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerBlindDog_1to2_25
+  parent: MutantSpawnerBlindDogBase
+  name: blind dog spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerBlindDog_1to2_50
+  parent: MutantSpawnerBlindDogBase
+  name: blind dog spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+# High density & dangerous area
+- type: entity
+  id: MutantSpawnerBlindDog_1to4_25
+  parent: MutantSpawnerBlindDogBase
+  name: blind dog spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerBlindDog_1to4_50
+  parent: MutantSpawnerBlindDogBase
+  name: blind dog spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+      
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerBlindDog_1to2_01
+  parent: MutantSpawnerBlindDogBase
+  name: blind dog spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

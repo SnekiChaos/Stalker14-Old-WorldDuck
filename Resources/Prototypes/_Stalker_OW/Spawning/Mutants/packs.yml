@@ -1,0 +1,73 @@
+﻿# ST:OW - Expanded upon eventually? Idk not really used a ton atm.
+# Also uses STPackSpawner instead of SpawnOnApproach
+- type: entity
+  name: bear family spawner (100%)
+  id: BearFamilyPackTrigger100
+  parent: MarkerBase
+  suffix: ST, T3
+  components:
+    - type: STPackSpawner
+      protoId: STBearFamilyPack
+      chance: 1.0
+      cooldown: 3600
+    - type: ApproachTrigger
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: Mobs/Aliens/Xenos/burrower.rsi
+          state: crit
+        - state: ai
+
+- type: entity
+  name: blind dog pack spawner (100%)
+  id: BlindDogPackTrigger100
+  parent: MarkerBase
+  suffix: ST, T1
+  components:
+    - type: STPackSpawner
+      protoId: STBlindDogPack
+      chance: 1.0
+      cooldown: 3600
+    - type: ApproachTrigger
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: Mobs/Aliens/Xenos/burrower.rsi
+          state: crit
+        - state: ai
+
+- type: entity
+  name: spider nest spawner (100%)
+  id: SpiderLapachPackTrigger100
+  parent: MarkerBase
+  suffix: ST, T1
+  components:
+    - type: STPackSpawner
+      protoId: STSpiderLapachPack
+      chance: 1.0
+      cooldown: 3600
+    - type: ApproachTrigger
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: Mobs/Aliens/Xenos/burrower.rsi
+          state: crit
+        - state: ai
+
+- type: entity
+  name: controller & blind dogs spawner (100%)
+  id: ControllerBlindDogPackTrigger100
+  parent: MarkerBase
+  suffix: ST, T3
+  components:
+    - type: STPackSpawner
+      protoId: STControllerBlindDogPack
+      chance: 1.0
+      cooldown: 3600
+    - type: ApproachTrigger
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: Mobs/Aliens/Xenos/burrower.rsi
+          state: crit
+        - state: ai

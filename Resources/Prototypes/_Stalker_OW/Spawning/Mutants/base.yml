@@ -1,0 +1,26 @@
+﻿# Base for ST:OW mutant SpawnOnApproach triggers
+
+- type: entity
+  id: MutantSpawnerBase
+  parent: MarkerBase
+  abstract: true
+  suffix: ST:OW, Mutant Spawner
+  components:
+    - type: ApproachTrigger
+
+    - type: Sprite
+      layers:
+        - state: blue
+        - sprite: Mobs/Aliens/Xenos/burrower.rsi
+          state: crit
+        - state: ai
+          
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 1
+
+      minOffset: 5 # Min tiles from spawner
+      maxOffset: 8 # Max tiles from spawner
+
+      chance: 1 # x100, 1x100 = 100% spawn rate
+      cooldown: 1800 # In seconds, 30 minutes

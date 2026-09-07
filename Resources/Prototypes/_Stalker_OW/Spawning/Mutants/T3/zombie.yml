@@ -1,0 +1,138 @@
+﻿# Zombies
+
+- type: entity
+  id: MutantSpawnerZombieBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T3, Zombie
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+      - MobStalkerZombieBase
+      - MobStalkerZombieISSG
+      - MobStalkerZombieSosop
+      - MobStalkerZombieGlod
+      - MobStalkerZombieChN
+      - MobStalkerZombieRHBZ
+      - MobStalkerZombieMerc
+      - MobStalkerZombieBandit1
+      - MobStalkerZombieDolg1
+      - MobStalkerZombieDolg2
+      - MobStalkerZombieEcologist1
+      - MobStalkerZombieEcologist2
+      - MobStalkerZombieFreedom1
+      - MobStalkerZombieFreedom2
+      - MobStalkerZombieLoner1
+      - MobStalkerZombieLoner2
+      - MobStalkerZombieLoner3
+      - MobStalkerZombieLoner4
+      - MobStalkerZombieLoner5
+      - MobStalkerZombieLonershotgunner1
+      - MobStalkerZombieDolgshotgunner1
+      - MobStalkerZombieMerc1
+      restricted:
+      - MobStalkerZombieBase
+      - MobStalkerZombieISSG
+      - MobStalkerZombieSosop
+      - MobStalkerZombieGlod
+      - MobStalkerZombieChN
+      - MobStalkerZombieRHBZ
+      - MobStalkerZombieMerc
+      - MobStalkerZombieBandit1
+      - MobStalkerZombieDolg1
+      - MobStalkerZombieDolg2
+      - MobStalkerZombieEcologist1
+      - MobStalkerZombieEcologist2
+      - MobStalkerZombieFreedom1
+      - MobStalkerZombieFreedom2
+      - MobStalkerZombieLoner1
+      - MobStalkerZombieLoner2
+      - MobStalkerZombieLoner3
+      - MobStalkerZombieLoner4
+      - MobStalkerZombieLoner5
+      - MobStalkerZombieLonershotgunner1
+      - MobStalkerZombieDolgshotgunner1
+      - MobStalkerZombieMerc1
+
+# General use
+- type: entity
+  id: MutantSpawnerZombie_1to2_10
+  parent: MutantSpawnerZombieBase
+  name: zombie spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerZombie_1to2_25
+  parent: MutantSpawnerZombieBase
+  name: zombie spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerZombie_1to2_50
+  parent: MutantSpawnerZombieBase
+  name: zombie spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerZombie_1to2_75
+  parent: MutantSpawnerZombieBase
+  name: zombie spawner (1-2, 75%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.75
+
+- type: entity
+  id: MutantSpawnerZombie_1to2_100
+  parent: MutantSpawnerZombieBase
+  name: zombie spawner (1-2, 100%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 1
+
+# High density & dangerous area      
+- type: entity
+  id: MutantSpawnerZombie_1to4_25
+  parent: MutantSpawnerZombieBase
+  name: zombie spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerZombie_1to4_50
+  parent: MutantSpawnerZombieBase
+  name: zombie spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerZombie_1to2_01
+  parent: MutantSpawnerZombieBase
+  name: zombie spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

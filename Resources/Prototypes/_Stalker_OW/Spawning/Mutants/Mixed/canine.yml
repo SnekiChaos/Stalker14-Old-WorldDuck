@@ -1,0 +1,60 @@
+﻿# The dawgs.
+
+# T2 - Pseudodogs & blind dogs
+- type: entity
+  id: MutantSpawnerCanineT2Base
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, Mixed, Canine, T2
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantBlindDogRed
+        - MobMutantBlindDogTall
+        - MobMutantBlindDogSmall
+        - MobMutantPseudodog
+      restricted:
+        - MobMutantBlindDogRed
+        - MobMutantBlindDogTall
+        - MobMutantBlindDogSmall
+        - MobMutantPseudodog
+        
+- type: entity
+  id: MutantSpawnerCanineT2_1to3_25
+  parent: MutantSpawnerCanineT2Base
+  name: canines mutants spawner T2 (1-3, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 3
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerCanineT2_1to3_50
+  parent: MutantSpawnerCanineT2Base
+  name: canines mutants spawner T2 (1-3, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 3
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerCanineT2_1to4_25
+  parent: MutantSpawnerCanineT2Base
+  name: canine mutants spawner T2 (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerCanineT2_1to4_50
+  parent: MutantSpawnerCanineT2Base
+  name: canine mutants spawner T2 (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50

@@ -1,0 +1,106 @@
+﻿# Burers
+
+- type: entity
+  id: MutantSpawnerBurerBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T3, Burer
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - STMutantBurer
+      restricted:
+        - STMutantBurer
+
+# General use
+- type: entity
+  id: MutantSpawnerBurer_1to2_10
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerBurer_1to2_25
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerBurer_1to2_50
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerBurer_1to2_75
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1-2, 75%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.75
+
+- type: entity
+  id: MutantSpawnerBurer_1to2_100
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1-2, 100%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 1
+
+- type: entity
+  id: MutantSpawnerBurer_1_100
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1, 100%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 1
+      chance: 1
+
+# High density & dangerous area      
+- type: entity
+  id: MutantSpawnerBurer_1to4_25
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerBurer_1to4_50
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerBurer_1to2_01
+  parent: MutantSpawnerBurerBase
+  name: burer spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

@@ -1,0 +1,99 @@
+﻿# Zombies but melee
+
+- type: entity
+  id: MutantSpawnerMeleeZombieBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T2, Melee Zombie
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobStalkerZombieMeleeBase
+        - MobStalkerZombieCivillian2
+        - MobStalkerZombieCivillian3
+        - MobStalkerZombieCivillian4
+        - MobStalkerZombieHazmat1
+        - MobStalkerZombieHazmat2
+        - MobStalkerZombieHazmatbrute1
+        - MobStalkerZombieHazmatbrute2
+        - MobStalkerZombieMilitary1
+        - MobStalkerZombieMilitary2
+        - MobStalkerZombieMilitary3
+        - MobStalkerZombiePolice1
+      restricted:
+        - MobStalkerZombieMeleeBase
+        - MobStalkerZombieCivillian2
+        - MobStalkerZombieCivillian3
+        - MobStalkerZombieCivillian4
+        - MobStalkerZombieHazmat1
+        - MobStalkerZombieHazmat2
+        - MobStalkerZombieHazmatbrute1
+        - MobStalkerZombieHazmatbrute2
+        - MobStalkerZombieMilitary1
+        - MobStalkerZombieMilitary2
+        - MobStalkerZombieMilitary3
+        - MobStalkerZombiePolice1
+      cooldown: 1200 # 20 minutes
+      
+# General use
+- type: entity
+  id: MutantSpawnerMeleeZombie_1to2_10
+  parent: MutantSpawnerMeleeZombieBase
+  name: melee zombie spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerMeleeZombie_1to2_25
+  parent: MutantSpawnerMeleeZombieBase
+  name: melee zombie spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerMeleeZombie_1to2_50
+  parent: MutantSpawnerMeleeZombieBase
+  name: melee zombie spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+# High density & dangerous area      
+- type: entity
+  id: MutantSpawnerMeleeZombie_1to4_25
+  parent: MutantSpawnerMeleeZombieBase
+  name: melee zombie spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerMeleeZombie_1to4_50
+  parent: MutantSpawnerMeleeZombieBase
+  name: melee zombie spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerMeleeZombie_1to2_01
+  parent: MutantSpawnerMeleeZombieBase
+  name: melee zombie spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

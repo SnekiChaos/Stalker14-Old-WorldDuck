@@ -27,21 +27,23 @@ public sealed class STPackSystem : EntitySystem
     {
         base.Initialize();
 
-SubscribeLocalEvent<STPackSpawnerComponent, MapInitEvent>(OnSpawnerMapInit);
         SubscribeLocalEvent<STPackSpawnerComponent, TriggerEvent>(OnTrigger);
 
         SubscribeLocalEvent<STPackHeadComponent, MobStateChangedEvent>(OnHeadStateChanged);
         SubscribeLocalEvent<STPackHeadComponent, EntityTerminatingEvent>(OnHeadDeleted);
     }
 
+    // ST:OW begin
+    // Skip active spawners and only re-enable once cooldown expires
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
+        var now = _timing.CurTime;
         var query = EntityQueryEnumerator<STPackSpawnerComponent>();
         while (query.MoveNext(out var uid, out var spawner))
         {
-            if (spawner.CooldownTime > _timing.CurTime)
+            if (spawner.Enabled || spawner.CooldownTime > now)
                 continue;
 
             if (TryComp<ApproachTriggerComponent>(uid, out var approach))
@@ -51,22 +53,35 @@ SubscribeLocalEvent<STPackSpawnerComponent, MapInitEvent>(OnSpawnerMapInit);
         }
     }
 
+    
+    // ST:OW
+    // Now properly puts spawner on cooldown and only attempts to spawn when off cooldown
+    // Also uses the % chance to spawn now
     private void OnTrigger(Entity<STPackSpawnerComponent> entity, ref TriggerEvent args)
     {
         if (!entity.Comp.Enabled)
             return;
+        entity.Comp.CooldownTime = 
+            _timing.CurTime + TimeSpan.FromSeconds(entity.Comp.Cooldown);
 
-        if (!_random.Prob(entity.Comp.Chance))
-            return;
-
-        CreatePack(entity.Comp.ProtoId, _transform.GetMapCoordinates(entity));
-
-        entity.Comp.CooldownTime = _timing.CurTime + TimeSpan.FromSeconds(entity.Comp.Cooldown);
         entity.Comp.Enabled = false;
 
         if (TryComp<ApproachTriggerComponent>(entity, out var approach))
+        {
             approach.Enabled = false;
+        }
+        
+        var success = _random.Prob(Math.Clamp(entity.Comp.Chance, 0f, 1f));
+
+        if (!success)
+            return;
+
+        CreatePack(
+            entity.Comp.ProtoId, 
+            _transform.GetMapCoordinates(entity)
+        );
     }
+    // ST:OW end
 
     private void OnHeadStateChanged(Entity<STPackHeadComponent> entity, ref MobStateChangedEvent args)
     {
@@ -85,11 +100,6 @@ SubscribeLocalEvent<STPackSpawnerComponent, MapInitEvent>(OnSpawnerMapInit);
         SetRandomHead(entity);
     }
 
-private void OnSpawnerMapInit(Entity<STPackSpawnerComponent> entity, ref MapInitEvent args)
-    {
-        CreatePack(entity.Comp.ProtoId, _transform.GetMapCoordinates(entity));
-    }
-
     public void CreatePack(ProtoId<STPackPrototype> prototypeId, MapCoordinates coordinates)
     {
         if (!_prototype.TryIndex(prototypeId, out var prototype))
@@ -103,7 +113,7 @@ private void OnSpawnerMapInit(Entity<STPackSpawnerComponent> entity, ref MapInit
         AddComp<STPackHeadComponent>(headUid);
 
         // Creating members
-        var memberCount = _random.Next(prototype.MinMemberCount, prototype.MaxMemberCount);
+        var memberCount = _random.Next(prototype.MinMemberCount, prototype.MaxMemberCount + 1); // ST:OW
         for (var i = 0; i < memberCount; i++)
         {
             var memberPrototype = _random.Pick(prototype.Members);

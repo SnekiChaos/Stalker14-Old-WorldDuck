@@ -1,7 +1,7 @@
 - type: entity
-  parent: STMutantByurer
-  id: STMobMutantByurerCommon
-  name: Byurer
+  parent: STMutantBurer
+  id: STMobMutantBurerCommon
+  name: Burer
   description: A dwarf-like mutant with powerful telekinetic abilities. It hurls objects at its enemies with deadly force.
   suffix: ST, T3, Common
   components:
@@ -10,9 +10,9 @@
     applied: true
 
 - type: entity
-  parent: STMutantByurer
-  id: STMobMutantByurerUncommon
-  name: Adapted Byurer
+  parent: STMutantBurer
+  id: STMobMutantBurerUncommon
+  name: Adapted Burer
   description: A dwarf-like mutant with powerful telekinetic abilities. It hurls objects at its enemies with deadly force.
   suffix: ST, T3, Adapted
   components:
@@ -20,9 +20,9 @@
     quality: Uncommon
 
 - type: entity
-  parent: STMutantByurer
-  id: STMobMutantByurerRare
-  name: Mutated Byurer
+  parent: STMutantBurer
+  id: STMobMutantBurerRare
+  name: Mutated Burer
   description: A dwarf-like mutant with powerful telekinetic abilities. It hurls objects at its enemies with deadly force.
   suffix: ST, T3, Mutated
   components:
@@ -30,9 +30,9 @@
     quality: Rare
 
 - type: entity
-  parent: STMutantByurer
-  id: STMobMutantByurerLegendary
-  name: Singular Byurer
+  parent: STMutantBurer
+  id: STMobMutantBurerLegendary
+  name: Singular Burer
   description: A dwarf-like mutant with powerful telekinetic abilities. It hurls objects at its enemies with deadly force.
   suffix: ST, T3, Singular
   components:

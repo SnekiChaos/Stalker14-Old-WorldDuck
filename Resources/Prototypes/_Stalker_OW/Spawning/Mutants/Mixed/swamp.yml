@@ -1,0 +1,82 @@
+﻿# For da Renegades
+# Used to mix up spawns in Swamp to avoid spamming too many fleshes
+
+# T1
+- type: entity
+  id: MutantSpawnerSwampT1Base
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, Mixed, Swamp, T1
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantBoar
+        - MobMutantFleshAggressive
+        - MobMutantCat
+        - MobMutantSeer
+      restricted:
+        - MobMutantBoar
+        - MobMutantFleshAggressive
+        - MobMutantCat
+        - MobMutantSeer
+
+
+- type: entity
+  id: MutantSpawnerSwampT1_1to3_25
+  parent: MutantSpawnerSwampT1Base
+  name: swamp mutants spawner T1 (1-3, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 3
+      chance: 0.25
+
+
+- type: entity
+  id: MutantSpawnerSwampT1_1to3_50
+  parent: MutantSpawnerSwampT1Base
+  name: swamp mutants spawner T1 (1-3, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 3
+      chance: 0.50
+
+
+# T2
+- type: entity
+  id: MutantSpawnerSwampT2Base
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, Mixed, Swamp, T2
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantSeasonedBoar
+        - MobMutantLeshiy
+        - MobMutantPseudodog
+      restricted:
+        - MobMutantSeasonedBoar
+        - MobMutantLeshiy
+        - MobMutantPseudodog
+
+- type: entity
+  id: MutantSpawnerSwampT2_1to3_25
+  parent: MutantSpawnerSwampT2Base
+  name: swamp mutants spawner T2 (1-3, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 3
+      chance: 0.25
+
+
+- type: entity
+  id: MutantSpawnerSwampT2_1to3_50
+  parent: MutantSpawnerSwampT2Base
+  name: swamp mutants spawner T2 (1-3, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 3
+      chance: 0.50

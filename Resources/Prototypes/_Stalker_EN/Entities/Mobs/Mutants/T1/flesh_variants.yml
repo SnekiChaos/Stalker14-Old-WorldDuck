@@ -38,8 +38,8 @@
 
 # Flesh Aggressive variants
 - type: entity
-  parent: MobMutantFleshAgressive
-  id: STMobMutantFleshAgressiveCommon
+  parent: MobMutantFleshAggressive
+  id: STMobMutantFleshAggressiveCommon
   name: Aggressive Flesh
   suffix: ST, T1, Common, Aggressive
   components:
@@ -48,8 +48,8 @@
     applied: true
 
 - type: entity
-  parent: MobMutantFleshAgressive
-  id: STMobMutantFleshAgressiveUncommon
+  parent: MobMutantFleshAggressive
+  id: STMobMutantFleshAggressiveUncommon
   name: Adapted Aggressive Flesh
   suffix: ST, T1, Adapted, Aggressive
   components:
@@ -57,8 +57,8 @@
     quality: Uncommon
 
 - type: entity
-  parent: MobMutantFleshAgressive
-  id: STMobMutantFleshAgressiveRare
+  parent: MobMutantFleshAggressive
+  id: STMobMutantFleshAggressiveRare
   name: Mutated Aggressive Flesh
   suffix: ST, T1, Mutated, Aggressive
   components:
@@ -66,8 +66,8 @@
     quality: Rare
 
 - type: entity
-  parent: MobMutantFleshAgressive
-  id: STMobMutantFleshAgressiveLegendary
+  parent: MobMutantFleshAggressive
+  id: STMobMutantFleshAggressiveLegendary
   name: Singular Aggressive Flesh
   suffix: ST, T1, Singular, Aggressive
   components:

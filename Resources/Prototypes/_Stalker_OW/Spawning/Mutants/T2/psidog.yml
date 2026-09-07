@@ -1,0 +1,107 @@
+﻿# Psidogs
+
+- type: entity
+  id: MutantSpawnerPsidogBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T2, Psidog
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MutantPsidog
+      restricted:
+        - MutantPsidog
+      cooldown: 1200 # 20 minutes
+
+# General use
+- type: entity
+  id: MutantSpawnerPsidog_1to2_10
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerPsidog_1to2_25
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPsidog_1to2_50
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPsidog_1to2_75
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1-2, 75%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.75
+
+- type: entity
+  id: MutantSpawnerPsidog_1_50
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPsidog_1_100
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1, 100%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 1
+      chance: 1
+
+# High density & dangerous area      
+- type: entity
+  id: MutantSpawnerPsidog_1to4_25
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPsidog_1to4_50
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerPsidog_1to2_01
+  parent: MutantSpawnerPsidogBase
+  name: psidog spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

@@ -118803,42 +118803,42 @@ entities:
     - type: Transform
       pos: 37.5,-30.5
       parent: 1
-- proto: STTriggerBloodSucker121010
+- proto: MutantSpawnerBloodsucker_1to2_10
   entities:
   - uid: 14800
     components:
     - type: Transform
       pos: -21.5,-67.5
       parent: 1
-- proto: STTriggerBloodSucker125030
+- proto: MutantSpawnerBloodsucker_1to2_50
   entities:
   - uid: 14799
     components:
     - type: Transform
       pos: -11.5,-68.5
       parent: 1
-- proto: STTriggerByurer125030
+- proto: MutantSpawnerBurer_1to2_50
   entities:
   - uid: 15047
     components:
     - type: Transform
       pos: -88.5,37.5
       parent: 1
-- proto: STTriggerController125
+- proto: MutantSpawnerController_1_25
   entities:
   - uid: 6532
     components:
     - type: Transform
       pos: -86.5,36.5
       parent: 1
-- proto: STTriggerPoltergeistElec127530
+- proto: MutantSpawnerPoltergeistElec_1to2_50
   entities:
   - uid: 15040
     components:
     - type: Transform
       pos: -84.5,9.5
       parent: 1
-- proto: STTriggerZombie121010
+- proto: MutantSpawnerZombie_1to2_10
   entities:
   - uid: 14798
     components:
@@ -118865,7 +118865,7 @@ entities:
     - type: Transform
       pos: -50.5,-27.5
       parent: 1
-- proto: STTriggerZombie125010
+- proto: MutantSpawnerZombie_1to2_50
   entities:
   - uid: 14796
     components:
@@ -118877,7 +118877,7 @@ entities:
     - type: Transform
       pos: -92.5,-32.5
       parent: 1
-- proto: STTriggerZombie145030
+- proto: MutantSpawnerZombie_1to4_50
   entities:
   - uid: 14797
     components:

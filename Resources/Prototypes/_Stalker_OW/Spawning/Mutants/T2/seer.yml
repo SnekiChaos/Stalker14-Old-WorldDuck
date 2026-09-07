@@ -1,0 +1,77 @@
+﻿# Seers
+
+- type: entity
+  id: MutantSpawnerSeerBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T2, Seer
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantSeer
+      restricted:
+        - MobMutantSeer
+      cooldown: 1200 # 20 minutes
+
+# General use
+- type: entity
+  id: MutantSpawnerSeer_1to2_10
+  parent: MutantSpawnerSeerBase
+  name: seer spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerSeer_1to2_25
+  parent: MutantSpawnerSeerBase
+  name: seer spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerSeer_1to2_50
+  parent: MutantSpawnerSeerBase
+  name: seer spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+# High density & dangerous area      
+- type: entity
+  id: MutantSpawnerSeer_1to4_25
+  parent: MutantSpawnerSeerBase
+  name: seer spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerSeer_1to4_50
+  parent: MutantSpawnerSeerBase
+  name: seer spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerSeer_1to2_01
+  parent: MutantSpawnerSeerBase
+  name: seer spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

@@ -1,0 +1,77 @@
+﻿# Karliks
+
+- type: entity
+  id: MutantSpawnerKarlikBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T2, Karlik
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - STMutantKarlik
+      restricted:
+        - STMutantKarlik
+      cooldown: 1200 # 20 minutes
+
+# General use
+- type: entity
+  id: MutantSpawnerKarlik_1to2_10
+  parent: MutantSpawnerKarlikBase
+  name: karlik spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerKarlik_1to2_25
+  parent: MutantSpawnerKarlikBase
+  name: karlik spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerKarlik_1to2_50
+  parent: MutantSpawnerKarlikBase
+  name: karlik spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+# High density & dangerous area      
+- type: entity
+  id: MutantSpawnerKarlik_1to4_25
+  parent: MutantSpawnerKarlikBase
+  name: karlik spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerKarlik_1to4_50
+  parent: MutantSpawnerKarlikBase
+  name: karlik spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerKarlik_1to2_01
+  parent: MutantSpawnerKarlikBase
+  name: karlik spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

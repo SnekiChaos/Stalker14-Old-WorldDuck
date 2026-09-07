@@ -1,0 +1,404 @@
+﻿# Poltergeists
+
+- type: entity
+  id: MutantSpawnerPoltergeistBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T2, Poltergeist
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+        - MobMutantPoltergeistIce
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistFire
+        - MobMutantPoltergeistIce
+        - MobMutantPoltergeistElec
+      cooldown: 1200 # 20 minutes
+
+# Fire poltergeists
+# General use
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1to2_10
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      restricted:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1to2_25
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      restricted:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1to2_50
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      restricted:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1_50
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1_75
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1, 75%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      restricted:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.75
+
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1_100
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1, 100%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      restricted:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 1
+      chance: 1
+
+# High density & dangerous area
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1to4_25
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      restricted:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1to4_50
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      restricted:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerPoltergeistFire_1to2_01
+  parent: MutantSpawnerPoltergeistBase
+  name: fire poltergeist spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistFire
+      restricted:
+        - MobMutantPoltergeistFire
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01
+
+
+# Ice poltergeists
+# General use
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1to2_10
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      restricted:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1to2_25
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      restricted:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1to2_50
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      restricted:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1_50
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1_75
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1, 75%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      restricted:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.75
+
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1_100
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1, 100%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      restricted:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 1
+      chance: 1
+
+# High density & dangerous area
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1to4_25
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      restricted:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1to4_50
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      restricted:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerPoltergeistIce_1to2_01
+  parent: MutantSpawnerPoltergeistBase
+  name: ice poltergeist spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistIce
+      restricted:
+        - MobMutantPoltergeistIce
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01
+
+
+# Electric poltergeists
+# General use
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1to2_10
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1-2, 10%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1to2_25
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1-2, 25%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1to2_50
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1-2, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1_50
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1_75
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1, 75%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 1
+      chance: 0.75
+
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1_100
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1, 100%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 1
+      chance: 1
+
+# High density & dangerous area
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1to4_25
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1-4, 25%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1to4_50
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1-4, 50%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 4
+      chance: 0.50
+
+# Rare isolated spawn
+- type: entity
+  id: MutantSpawnerPoltergeistElec_1to2_01
+  parent: MutantSpawnerPoltergeistBase
+  name: electric poltergeist spawner (1-2, 1%)
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPoltergeistElec
+      restricted:
+        - MobMutantPoltergeistElec
+      minAmount: 1
+      maxAmount: 2
+      chance: 0.01

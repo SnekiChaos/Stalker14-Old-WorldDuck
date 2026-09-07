@@ -1,0 +1,56 @@
+﻿# Pseudogiant
+
+- type: entity
+  id: MutantSpawnerPseudogiantBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T4, Pseudogiant
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - MobMutantPseudogiant
+      restricted:
+        - MobMutantPseudogiant
+      minAmount: 1
+      maxAmount: 1
+
+# General use
+- type: entity
+  id: MutantSpawnerPseudogiant_1_10
+  parent: MutantSpawnerPseudogiantBase
+  name: pseudogiant spawner (1, 10%)
+  components:
+    - type: SpawnOnApproach
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerPseudogiant_1_25
+  parent: MutantSpawnerPseudogiantBase
+  name: pseudogiant spawner (1, 25%)
+  components:
+    - type: SpawnOnApproach
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerPseudogiant_1_50
+  parent: MutantSpawnerPseudogiantBase
+  name: pseudogiant spawner (1, 50%)
+  components:
+    - type: SpawnOnApproach
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerPseudogiant_1_75
+  parent: MutantSpawnerPseudogiantBase
+  name: pseudogiant spawner (1, 75%)
+  components:
+    - type: SpawnOnApproach
+      chance: 0.75
+
+- type: entity
+  id: MutantSpawnerPseudogiant_1_100
+  parent: MutantSpawnerPseudogiantBase
+  name: pseudogiant spawner (1, 100%)
+  components:
+    - type: SpawnOnApproach
+      chance: 1

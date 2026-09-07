@@ -135,7 +135,7 @@
     children:
     - id: MobMutantBoar
       weight: 20
-    - id: MobMutantFleshAgressive
+    - id: MobMutantFleshAggressive
       weight: 35
     - id: MobMutantSpiderLapach
       weight: 45

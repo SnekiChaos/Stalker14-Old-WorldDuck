@@ -1,5 +1,5 @@
 - type: entity
-  id: STMutantByurer
+  id: STMutantBurer # ST:OW
   parent: BaseMobMutant
   name: бюрер
   suffix: ST, T3

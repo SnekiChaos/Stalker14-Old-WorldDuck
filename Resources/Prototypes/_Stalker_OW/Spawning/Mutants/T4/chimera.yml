@@ -1,0 +1,56 @@
+﻿# Chimeras
+
+- type: entity
+  id: MutantSpawnerChimeraBase
+  parent: MutantSpawnerBase
+  abstract: true
+  suffix: ST:OW, T4, Chimera
+  components:
+    - type: SpawnOnApproach
+      prototypes:
+        - STMobMutantChimera
+      restricted:
+        - STMobMutantChimera
+      minAmount: 1
+      maxAmount: 1
+
+# General use
+- type: entity
+  id: MutantSpawnerChimera_1_10
+  parent: MutantSpawnerChimeraBase
+  name: chimera spawner (1, 10%)
+  components:
+    - type: SpawnOnApproach
+      chance: 0.10
+
+- type: entity
+  id: MutantSpawnerChimera_1_25
+  parent: MutantSpawnerChimeraBase
+  name: chimera spawner (1, 25%)
+  components:
+    - type: SpawnOnApproach
+      chance: 0.25
+
+- type: entity
+  id: MutantSpawnerChimera_1_50
+  parent: MutantSpawnerChimeraBase
+  name: chimera spawner (1, 50%)
+  components:
+    - type: SpawnOnApproach
+      chance: 0.50
+
+- type: entity
+  id: MutantSpawnerChimera_1_75
+  parent: MutantSpawnerChimeraBase
+  name: chimera spawner (1, 75%)
+  components:
+    - type: SpawnOnApproach
+      chance: 0.75
+      
+- type: entity
+  id: MutantSpawnerChimera_1_100
+  parent: MutantSpawnerChimeraBase
+  name: chimera spawner (1, 100%)
+  components:
+    - type: SpawnOnApproach
+      chance: 1
