@@ -3665,5 +3665,12 @@
   id: 412
   time: '2026-09-03T04:25:29.599422+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/29
+- author: kuro964
+  changes:
+  - message: Mutants no longer spawn outside the map or in glitch spots
+    type: Tweak
+  id: 413
+  time: '2026-09-07T23:11:15.588078+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/33
 Name: Stalker
 Order: -1
