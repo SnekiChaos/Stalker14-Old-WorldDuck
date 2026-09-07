@@ -1,0 +1,16 @@
+﻿# Mainly for mapping
+# SpawnOnApproach won't pass it and considers it a boundary
+
+- type: entity
+  id: STSpawnBoundary
+  name: spawn boundary marker
+  description: Acts as a barrier for spawners.
+  parent: MarkerBase
+  suffix: ST:OW, Spawn Boundary
+  components:
+    - type: STSpawnBoundary
+    - type: Sprite
+      drawdepth: Overdoors
+      sprite: Markers/cross.rsi
+      layers:
+        - state: pink

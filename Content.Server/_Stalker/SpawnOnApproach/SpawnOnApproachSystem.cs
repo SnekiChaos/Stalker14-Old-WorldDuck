@@ -1,7 +1,5 @@
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using Content.Server._Stalker.ApproachTrigger;
-using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
@@ -10,6 +8,10 @@ using Robust.Shared.Map;
 using Robust.Shared.Player; // ST14-EN: Addition
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Server._Stalker_OW.Spawning.Regions; // ST:OW
+using Robust.Shared.Maths; // ST:OW
+using Content.Shared.Mobs; // ST:OW
+using Content.Shared.Doors.Components; // ST:OW
 
 namespace Content.Server._Stalker.SpawnOnApproach;
 
@@ -20,6 +22,16 @@ public sealed class SpawnOnApproachSystem : EntitySystem
     [Robust.Shared.IoC.Dependency] private readonly TurfSystem _turf = default!;
     [Robust.Shared.IoC.Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
 
+    // ST:OW begin
+    private static readonly Vector2i[] CardinalDirections =
+    {
+        new(1, 0),
+        new(-1, 0),
+        new(0, 1),
+        new(0, -1),
+    };
+    // ST:OW end
+    
     public override void Initialize()
     {
         base.Initialize();
@@ -38,6 +50,7 @@ public sealed class SpawnOnApproachSystem : EntitySystem
 
         SpawnWithOffset(entity);
     }
+
     private void OnTrigger(Entity<SpawnOnApproachComponent> entity, ref TriggerEvent args)
     {
         if (!entity.Comp.Enabled)
@@ -59,30 +72,43 @@ public sealed class SpawnOnApproachSystem : EntitySystem
                 comp.CoolDownTime = _timing.CurTime + TimeSpan.FromSeconds(comp.Cooldown);
                 comp.Enabled = false;
             }
+
             return;
         }
 
         var xform = Transform(entity);
+        // ST:OW begin
+        var amount = _random.Next(
+            comp.MinAmount,
+            comp.MaxAmount + 1);
 
-        var amount = _random.Next(comp.MinAmount, comp.MaxAmount);
-        for (var i = 0; i < amount; i++)
+        if (amount > 0)
         {
-            var initialCoords = xform.Coordinates;
+            var (reachableTiles, fallbackCoords) =
+                BuildSpawnSearchArea(
+                    xform.Coordinates,
+                    comp.MaxOffset);
 
-            // ST14-EN: Just made this call RandomizeUntilCorrect
-            initialCoords = RandomizeUntilCorrect(comp, initialCoords);
+            for (var i = 0; i < amount; i++)
+            {
+                if (!TryFindSpawnPosition(
+                        entity.Owner,
+                        comp,
+                        xform.Coordinates,
+                        reachableTiles,
+                        fallbackCoords,
+                        out var spawnCoords))
+                {
+                    continue;
+                }
 
-            // Randomizing entity
-            var proto = _random.Pick(comp.EntProtoIds);
-            Spawn(proto, initialCoords);
+                var proto = _random.Pick(comp.EntProtoIds);
+                Spawn(proto, spawnCoords);
+            }
         }
-        if (TryComp<ApproachTriggerComponent>(entity, out var approach))
-            approach.Enabled = false;
-
-        comp.CoolDownTime = _timing.CurTime + TimeSpan.FromSeconds(comp.Cooldown);
-        comp.Enabled = false;
     }
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    // ST:OW end
+
     private EntityCoordinates RandomizeCoords(SpawnOnApproachComponent comp, EntityCoordinates initial)
     {
         // ST14-EN: commented out
@@ -96,43 +122,46 @@ public sealed class SpawnOnApproachSystem : EntitySystem
         return initial.Offset(_random.NextAngle().ToVec() * lightningDistance);
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private EntityCoordinates RandomizeUntilCorrect(SpawnOnApproachComponent comp, EntityCoordinates initial)
+    // ST:OW begin
+    private bool TryFindRandomSpawn(EntityUid spawner, 
+        SpawnOnApproachComponent comp, 
+        EntityCoordinates origin, 
+        HashSet<Vector2i> reachableTiles, 
+        out EntityCoordinates result)
     {
-        var triesSoFar = 0; // ST14-EN Addition
-        var offset = initial;
-
-
-
-        // ST14-EN: Made this all `||` instead of `&&`, so you keep retrying if any of these return true
-        while (CheckBlocked(offset, comp /* ST14-EN Addition */) || CheckEntities(offset, comp) || CheckPlayerNearby(offset, comp) /* ST14-EN Addition */)
+        for (var attempt = 0;
+             attempt < comp.MaxSpawnAttempts;
+             attempt++)
         {
-            offset = RandomizeCoords(comp, initial);
+            var candidate =
+                RandomizeCoords(comp, origin);
 
-            // ST14-EN Addition: infinite-loop check:
-            if (++triesSoFar == 15)
-                return initial;
-        }
+            var tile =
+                _turf.GetTileRef(candidate);
 
-        return offset;
-    }
-
-    private bool CheckEntities(EntityCoordinates coords, SpawnOnApproachComponent comp)
-    {
-        var tile = _turf.GetTileRef(coords);
-        if (tile == null)
-            return false;
-
-        foreach (var entity in _lookupSystem.GetLocalEntitiesIntersecting(tile.Value, 0f))
-        {
-            var meta = MetaData(entity);
-            if (meta.EntityPrototype == null)
+            if (tile == null ||
+                !reachableTiles.Contains(
+                    tile.Value.GridIndices))
+            {
                 continue;
+            }
 
-            return comp.RestrictedProtos.Contains(meta.EntityPrototype.ID);
+            if (!IsValidSpawnPosition(
+                    spawner,
+                    candidate,
+                    comp))
+            {
+                continue;
+            }
+
+            result = candidate;
+            return true;
         }
+
+        result = default;
         return false;
     }
+    // ST:OW end
 
     // ST14-EN: Addition
     private bool CheckPlayerNearby(in EntityCoordinates coords, SpawnOnApproachComponent comp)
@@ -149,32 +178,220 @@ public sealed class SpawnOnApproachSystem : EntitySystem
 
         return false;
     }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private bool CheckBlocked(EntityCoordinates coords, SpawnOnApproachComponent comp /* ST14-EN Addition */)
-    {
-        if (comp.SpawnInside)
-            return false;
-
-        var tile = _turf.GetTileRef(coords);
-
-        return tile != null && _turf.IsTileBlocked(tile.Value, CollisionGroup.Impassable);
-    }
-
+    
+    // ST:OW begin
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<SpawnOnApproachComponent>();
+        var now = _timing.CurTime;
+
+        var query =
+            EntityQueryEnumerator<SpawnOnApproachComponent>();
+
         while (query.MoveNext(out var uid, out var spawner))
         {
-            if (spawner.CoolDownTime > _timing.CurTime)
+            if (spawner.Enabled)
+                continue;
+
+            if (spawner.CoolDownTime > now)
                 continue;
 
             if (TryComp<ApproachTriggerComponent>(uid, out var approach))
+            {
                 approach.Enabled = true;
+            }
 
             spawner.Enabled = true;
         }
     }
+    
+    // Use regular system to find spawn spot
+    // If that fails then look for nearby floor tiles
+    private bool TryFindSpawnPosition(
+        EntityUid spawner,
+        SpawnOnApproachComponent comp,
+        EntityCoordinates origin,
+        HashSet<Vector2i> reachableTiles,
+        List<EntityCoordinates> fallbackCoords,
+        out EntityCoordinates result)
+    {
+        if (TryFindRandomSpawn(
+                spawner,
+                comp,
+                origin,
+                reachableTiles,
+                out result))
+        {
+            return true;
+        }
+
+        return TryFindConnectedFallback(
+            spawner,
+            comp,
+            fallbackCoords,
+            out result);
+    }
+    
+    // Uses a breadth-first search flood-fill system :D
+    // Calculates the valid area around the spawner and returns a set of reachable grids & fallback coordinates
+    private (HashSet<Vector2i> ReachableTiles, List<EntityCoordinates> FallbackCoords) BuildSpawnSearchArea(
+        EntityCoordinates origin, 
+        float maxOffset)
+    {
+        var reachableTiles = new HashSet<Vector2i>();
+        var fallbackCoords = new List<EntityCoordinates>();
+
+        var visited = new HashSet<Vector2i>();
+        var queue = new Queue<Vector2i>();
+
+        var start = Vector2i.Zero;
+
+        visited.Add(start);
+        queue.Enqueue(start);
+
+        var fallbackMaxSq = maxOffset * maxOffset;
+        var searchOffset = maxOffset + 1f;
+        var searchMaxSq = searchOffset * searchOffset;
+
+        while (queue.Count > 0)
+        {
+            var offset = queue.Dequeue();
+            var distanceSq = offset.X * offset.X + offset.Y * offset.Y;
+
+            if (distanceSq > searchMaxSq)
+                continue;
+
+            var coords = origin.Offset(new Vector2(offset.X, offset.Y));
+
+            if (!TryGetTraversableSpawnTile(coords, out var gridIndices))
+                continue;
+
+            reachableTiles.Add(gridIndices);
+
+            if (distanceSq <= fallbackMaxSq)
+                fallbackCoords.Add(coords);
+
+            foreach (var direction in CardinalDirections)
+            {
+                var next = offset + direction;
+
+                if (!visited.Add(next))
+                    continue;
+
+                var nextDistanceSq = next.X * next.X + next.Y * next.Y;
+
+                if (nextDistanceSq > searchMaxSq)
+                    continue;
+
+                queue.Enqueue(next);
+            }
+        }
+
+        return (reachableTiles, fallbackCoords);
+    }
+    
+    // Selects a random position from the previously calculated area
+    private bool TryFindConnectedFallback(
+        EntityUid spawner,
+        SpawnOnApproachComponent comp,
+        List<EntityCoordinates> fallbackCoords,
+        out EntityCoordinates result)
+    {
+        result = default;
+        var validCount = 0;
+
+        foreach (var coords in fallbackCoords)
+        {
+            if (!IsValidSpawnPosition(spawner, coords, comp))
+                continue;
+
+            validCount++;
+
+            if (_random.Next(validCount) == 0)
+                result = coords;
+        }
+
+        return validCount > 0;
+    }
+    
+    // Determine if the tile is "traversable"
+    // AKA not a wall, space, etc.
+    private bool TryGetTraversableSpawnTile(
+        EntityCoordinates coords,
+        out Vector2i gridIndices)
+    {
+        gridIndices = default;
+
+        var tile = _turf.GetTileRef(coords);
+
+        if (tile == null || tile.Value.Tile.IsEmpty)
+            return false;
+
+        var boundaryQuery = GetEntityQuery<STSpawnBoundaryComponent>();
+        var doorQuery = GetEntityQuery<DoorComponent>();
+
+        foreach (var uid in _lookupSystem.GetLocalEntitiesIntersecting(tile.Value, 0f))
+        {
+            if (boundaryQuery.HasComponent(uid) || doorQuery.HasComponent(uid))
+                return false;
+        }
+
+        if (_turf.IsTileBlocked(tile.Value, CollisionGroup.Impassable))
+            return false;
+
+        gridIndices = tile.Value.GridIndices;
+        return true;
+    }
+    
+    
+    // Checks if an area is a legal spawn spot
+    // Considers tiles, collisions, and other entities
+    private bool IsValidSpawnPosition(
+        EntityUid spawner,
+        EntityCoordinates coords,
+        SpawnOnApproachComponent comp)
+    {
+        var tile = _turf.GetTileRef(coords);
+
+        if (tile == null || tile.Value.Tile.IsEmpty)
+            return false;
+
+        if (!comp.SpawnInside && _turf.IsTileBlocked(tile.Value, CollisionGroup.Impassable))
+            return false;
+
+        var checkRestricted = comp.RestrictedProtos.Count > 0;
+        var checkMobs = !comp.SpawnInside;
+
+        if (checkRestricted || checkMobs)
+        {
+            var metaQuery = GetEntityQuery<MetaDataComponent>();
+            var mobQuery = GetEntityQuery<MobStateComponent>();
+
+            foreach (var uid in _lookupSystem.GetLocalEntitiesIntersecting(tile.Value, 0f))
+            {
+                if (checkRestricted &&
+                    metaQuery.TryGetComponent(uid, out var meta) &&
+                    meta.EntityPrototype != null &&
+                    comp.RestrictedProtos.Contains(meta.EntityPrototype.ID))
+                {
+                    return false;
+                }
+
+                if (checkMobs &&
+                    uid != spawner &&
+                    mobQuery.TryGetComponent(uid, out var mobState) &&
+                    mobState.CurrentState != MobState.Dead)
+                {
+                    return false;
+                }
+            }
+        }
+
+        if (CheckPlayerNearby(coords, comp))
+            return false;
+
+        return true;
+    }
+    // ST:OW end
 }
