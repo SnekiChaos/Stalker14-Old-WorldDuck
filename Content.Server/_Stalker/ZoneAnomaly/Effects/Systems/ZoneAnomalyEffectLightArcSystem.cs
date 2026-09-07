@@ -26,6 +26,15 @@ public sealed class ZoneAnomalyEffectLightArcSystem : EntitySystem
 
     private void OnActivate(Entity<ZoneAnomalyEffectLightArcComponent> effect, ref ZoneAnomalyActivateEvent args)
     {
+        // ST:OW begin
+        foreach (var trigger in args.Triggers)
+        {
+            if (!HasComp<ZoneAnomalyEffectActivatorComponent>(trigger))
+                continue;
+
+            _lightning.ShootLightning(effect, trigger, effect.Comp.Lighting);
+        }
+        // ST:OW end
         var i = 0;
         var entities = _lookup.GetEntitiesInRange(Transform(effect).Coordinates, effect.Comp.Distance);
         foreach (var entity in entities)

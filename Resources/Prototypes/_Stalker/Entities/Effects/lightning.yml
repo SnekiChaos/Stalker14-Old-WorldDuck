@@ -48,6 +48,8 @@
       canArc: false
       lightningPrototype: GarlandLightning
       maxTotalArc: 3 #StalkerEN
+    - type: TimedDespawn # ST:OW
+      lifetime: 0.5 # ST:OW - Half a second
     - type: PointLight
       enabled: true
       color: "#f2fdff"

@@ -17,4 +17,7 @@ public sealed partial class ZoneAnomalyEffectLightArcComponent : Component
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float Distance = 6f;
+    
+    [DataField, ViewVariables(VVAccess.ReadWrite)] // ST:OW
+    public int MaxTargets = 13; // ST:OW - Default number that's already implemented
 }

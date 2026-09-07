@@ -155,8 +155,8 @@
         components:
           - ZoneAnomalyActivator
           - PredictedBattery
-        tags:
-          - AnomalyGarlandActivationTarget
+        #tags: # ST:OW
+        #  - AnomalyGarlandActivationTarget # ST:OW
       lighting: GarlandLightning
       chargePercent: 0.1
       distance: 3
@@ -164,7 +164,9 @@
       whitelist:
         tags:
           - AnomalyGarlandActivationTarget
-      distance: 8
+      distance: 5 # ST:OW - Chaining range
+      maxTargets: 2 # ST:OW - Only track onto two other garlands
+      stopRecursiveActivation: true
     - type: ZoneAnomalyEffectPlaySound
       sound: /Audio/_Stalker/Effects/electra_blast.ogg
     - type: ZoneAnomaly
