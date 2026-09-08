@@ -3672,5 +3672,12 @@
   id: 413
   time: '2026-09-07T23:11:15.588078+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/33
+- author: kuro964
+  changes:
+  - message: Removed Rumbling event
+    type: Remove
+  id: 414
+  time: '2026-09-08T21:57:51.624333+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/35
 Name: Stalker
 Order: -1
