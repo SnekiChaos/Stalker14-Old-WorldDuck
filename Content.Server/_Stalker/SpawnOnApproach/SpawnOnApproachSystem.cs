@@ -106,6 +106,13 @@ public sealed class SpawnOnApproachSystem : EntitySystem
                 Spawn(proto, spawnCoords);
             }
         }
+
+        if (TryComp<ApproachTriggerComponent>(entity, out var approach))
+            approach.Enabled = false;
+
+        comp.CoolDownTime =
+            _timing.CurTime + TimeSpan.FromSeconds(comp.Cooldown);
+        comp.Enabled = false;
     }
     // ST:OW end
 
