@@ -3695,5 +3695,14 @@
   id: 416
   time: '2026-09-09T06:13:54.839194+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/37
+- author: kuro964
+  changes:
+  - message: Mutants should no longer spawn on top of players
+    type: Tweak
+  - message: Increased mutant spawner activation range
+    type: Tweak
+  id: 417
+  time: '2026-09-09T19:16:58.386101+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/39
 Name: Stalker
 Order: -1
