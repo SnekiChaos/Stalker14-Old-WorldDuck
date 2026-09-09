@@ -3679,5 +3679,14 @@
   id: 414
   time: '2026-09-08T21:57:51.624333+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/35
+- author: kuro964
+  changes:
+  - message: Randomly anomaly spawning now works
+    type: Fix
+  - message: Tweaked mutants in Cordon, Swamps, Dark Valley, Agroprom, & Garbage
+    type: Tweak
+  id: 415
+  time: '2026-09-09T02:24:52.126011+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/36
 Name: Stalker
 Order: -1
