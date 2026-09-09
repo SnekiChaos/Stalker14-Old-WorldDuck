@@ -175,9 +175,18 @@ public sealed class SpawnOnApproachSystem : EntitySystem
     {
         if (comp.SpawnNearPlayers)
             return false;
-
+        // ST:OW begin
+        var minPlayerDistance = comp.MinPlayerDistance > 0f
+            ? comp.MinPlayerDistance
+            : comp.MinOffset * 0.75f;
+        if (minPlayerDistance <= 0f)
+            return false;
         var actorQuery = GetEntityQuery<ActorComponent>();
-        foreach (var uid in _lookupSystem.GetEntitiesInRange(coords, MathF.Max(comp.MinOffset * 0.75f, float.Epsilon) /* a debug assert throws if this is 0 or negative */, flags: LookupFlags.Approximate | LookupFlags.Dynamic))
+        foreach (var uid in _lookupSystem.GetEntitiesInRange(
+                     coords,
+                     minPlayerDistance,
+                     flags: LookupFlags.Approximate | LookupFlags.Dynamic))
+        // ST:OW end    
         {
             if (actorQuery.HasComponent(uid))
                 return true;

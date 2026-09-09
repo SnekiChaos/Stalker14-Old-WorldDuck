@@ -75,5 +75,8 @@
         /// </summary>
         [DataField]
         public int MaxSpawnAttempts = 30;
+        
+        [DataField]
+        public float MinPlayerDistance;
         // ST:OW end
     }

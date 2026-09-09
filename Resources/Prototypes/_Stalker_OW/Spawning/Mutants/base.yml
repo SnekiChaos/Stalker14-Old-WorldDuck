@@ -7,6 +7,7 @@
   suffix: ST:OW, Mutant Spawner
   components:
     - type: ApproachTrigger
+      range: 33
 
     - type: Sprite
       layers:
@@ -21,6 +22,8 @@
 
       minOffset: 5 # Min tiles from spawner
       maxOffset: 8 # Max tiles from spawner
+      
+      minPlayerDistance: 6 # Min distance from player
 
       chance: 1 # x100, 1x100 = 100% spawn rate
       cooldown: 1800 # In seconds, 30 minutes
