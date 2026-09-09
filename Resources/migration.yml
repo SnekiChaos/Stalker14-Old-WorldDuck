@@ -125,7 +125,7 @@ trash3Cache : null
 trash4Cache : null
 trash5Cache : null
 
-#10.12.2024 - global-update Stalker14
+# 9.9.2026 - ST:OW
 CraftComponentSourceGlue: null
 STPlotyTrigger1420 : null
 BlinddogTrigger : null
@@ -133,62 +133,62 @@ BlinddogTrigger1 : null
 BlinddogTrigger10 : null
 BlinddogTrigger100 : null
 BoarTrigger : null
-BoarTrigger1 : STTriggerBoar141010
-BoarTrigger10 : STTriggerBoar142510
-BoarTrigger100 : STTriggerBoar145030
-STTriggerBlindDog1210: STTriggerBlindDog121010
-STTriggerBlindDog1420: STTriggerBlindDog142010
-STTriggerBlindDog12100: STTriggerBlindDog125010
-STTriggerBlindDog14100: STTriggerBlindDog145010
-STTriggerBoar1210: STTriggerBoar121010
-STTriggerBoar1420: STTriggerBoar142510
-STTriggerBoar12100: STTriggerBoar125010
-STTriggerBoar14100: STTriggerBoar145010
-STTriggerBush1210: STTriggerBush121010
-STTriggerBush12100: STTriggerBush125010
-STTriggerFlesh1210: STTriggerFlesh121010
-STTriggerFlesh12100: STTriggerFlesh125010
-STTriggerFlesh14100: STTriggerFlesh145010
-STTriggerFlesh1420: STTriggerFlesh142010
-STTriggerFleshNeutral1210: STTriggerFleshNeutral145010
-STTriggerFleshNeutral12100: STTriggerFleshNeutral125010
-STTriggerFleshNeutral1420: STTriggerFleshNeutral142010
-STTriggerFleshNeutral14100: STTriggerFleshNeutral145010
-STTriggerSpider1420: STTriggerSpider142010
-STTriggerPseudodog1210: STTriggerPseudodog121010
-STTriggerPseudodog12100: STTriggerPseudodog125010
-STTriggerPseudodog1420: STTriggerPseudodog142510
-STTriggerRodent1210: STTriggerRodent121010
-STTriggerRodent12100: STTriggerRodent125010
-STTriggerRodent14100: STTriggerRodent145010
-STTriggerRodent1420: STTriggerRodent142010
-STTriggerSeasonedBoar1420: STTriggerSeasonedBoar141010
-STTriggerSeasonedBoar14100: STTriggerSeasonedBoar142510
-STTriggerSeasonedBoar1210: STTriggerSeasonedBoar121010
-STTriggerSeasonedBoar12100: STTriggerSeasonedBoar122510
-STTriggerLeshiy1210: STTriggerLeshiy121010
-STTriggerLeshiy1420: STTriggerLeshiy142010
-STTriggerOldBoar1420: STTriggerOldBoar141010
-STTriggerOldBoar14100: STTriggerOldBoar142530
-STTriggerOldBoar1210: STTriggerOldBoar121010
-STTriggerOldBoar12100: STTriggerOldBoar122510
-STTriggerBloodSucker1210: STTriggerBloodSucker142010
-STTriggerBloodSucker12100: STTriggerBloodSucker125030
-STTriggerBloodSucker14100: STTriggerBloodSucker145030
-STTriggerByurer1210: STTriggerByurer121010
-STTriggerByurer12100: STTriggerByurer125030
-STTriggerByurer1420: STTriggerByurer142010
-STTriggerByurer14100: STTriggerByurer142010
-STTriggerZombie1210: STTriggerZombie121010
-STTriggerZombie12100: STTriggerZombie121010
-STTriggerZombie14100: STTriggerZombie145030
-STTriggerRat1210: STTriggerRat121010
-STTriggerRat12100: STTriggerRat125010
-STTriggerRat14100: STTriggerRat145010
-STTriggerRat1420: STTriggerRat142010
-STTriggerSnork1210: STTriggerSnork121010
-STTriggerSnork12100: STTriggerSnork125030
-STTriggerSnork1420: STTriggerSnork142010
+BoarTrigger1 : null
+BoarTrigger10 : null
+BoarTrigger100 : null
+STTriggerBlindDog1210: null
+STTriggerBlindDog1420: null
+STTriggerBlindDog12100: null
+STTriggerBlindDog14100: null
+STTriggerBoar1210: null
+STTriggerBoar1420: null
+STTriggerBoar12100: null
+STTriggerBoar14100: null
+STTriggerBush1210: null
+STTriggerBush12100: null
+STTriggerFlesh1210: null
+STTriggerFlesh12100: null
+STTriggerFlesh14100: null
+STTriggerFlesh1420: null
+STTriggerFleshNeutral1210: null
+STTriggerFleshNeutral12100: null
+STTriggerFleshNeutral1420: null
+STTriggerFleshNeutral14100: null
+STTriggerSpider1420: null
+STTriggerPseudodog1210: null
+STTriggerPseudodog12100: null
+STTriggerPseudodog1420: null
+STTriggerRodent1210: null
+STTriggerRodent12100: null
+STTriggerRodent14100: null
+STTriggerRodent1420: null
+STTriggerSeasonedBoar1420: null
+STTriggerSeasonedBoar14100: null
+STTriggerSeasonedBoar1210: null
+STTriggerSeasonedBoar12100: null
+STTriggerLeshiy1210: null
+STTriggerLeshiy1420: null
+STTriggerOldBoar1420: null
+STTriggerOldBoar14100: null
+STTriggerOldBoar1210: null
+STTriggerOldBoar12100: null
+STTriggerBloodSucker1210: null
+STTriggerBloodSucker12100: null
+STTriggerBloodSucker14100: null
+STTriggerByurer1210: null
+STTriggerByurer12100: null
+STTriggerByurer1420: null
+STTriggerByurer14100: null
+STTriggerZombie1210: null
+STTriggerZombie12100: null
+STTriggerZombie14100: null
+STTriggerRat1210: null
+STTriggerRat12100: null
+STTriggerRat14100: null
+STTriggerRat1420: null
+STTriggerSnork1210: null
+STTriggerSnork12100: null
+STTriggerSnork1420: null
 BushTrigger : null
 BushTrigger1 : null
 BushTrigger10 : null
@@ -202,9 +202,9 @@ BloodsuckerTrigger1 : null
 BloodsuckerTrigger10 : null
 BloodsuckerTrigger100 : null
 PseudodogTrigger : null
-PseudodogTrigger1 : STTriggerPseudodog141010
-PseudodogTrigger10 : STTriggerPseudodog141030
-PseudodogTrigger100 : STTriggerPseudodog145010
+PseudodogTrigger1 : null
+PseudodogTrigger10 : null
+PseudodogTrigger100 : null
 PsidogTrigger : null
 PsidogTrigger1 : null
 PsidogTrigger10 : null
@@ -240,11 +240,11 @@ RatTrigger1 : null
 RatTrigger10a10 : null
 RatTrigger1a10 : null
 RatTrigger1a15 : null
-PseudogiantTrigger10a1 : STTriggerPseudogiant11030
-PseudogiantTrigger25a1 : STTriggerPseudogiant12510
-PseudogiantTrigger100a1 : STTriggerPseudogiant110030
-PseudogiantTrigger20a2 : STTriggerPseudogiant117530
-STTriggerPseudogiant125 : STTriggerPseudogiant11010
+PseudogiantTrigger10a1 : null
+PseudogiantTrigger25a1 : null
+PseudogiantTrigger100a1 : null
+PseudogiantTrigger20a2 : null
+STTriggerPseudogiant125 : null
 LeshiyTrigger10 : null
 LeshiyTrigger25 : null
 LeshiyTrigger50 : null
@@ -259,10 +259,10 @@ ByurerTrigger50 : null
 ByurerTrigger100 : null
 ZombieTriggerUR30 : null
 ZombieTriggerUR10: null
-STTriggerOracle1420: STTriggerOracle122530
-STTriggerOracle14100: STTriggerOracle127510
-STTriggerOracle1210: STTriggerOracle121010
-STTriggerOracle12100: STTriggerOracle125010
+STTriggerOracle1420: null
+STTriggerOracle14100: null
+STTriggerOracle1210: null
+STTriggerOracle12100: null
 
 #24.11.2024 - Stalker14
 CrateTrashCart : null
