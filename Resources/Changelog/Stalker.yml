@@ -3688,5 +3688,12 @@
   id: 415
   time: '2026-09-09T02:24:52.126011+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/36
+- author: Allias12
+  changes:
+  - message: Tooth Store Changes
+    type: Tweak
+  id: 416
+  time: '2026-09-09T06:13:54.839194+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/37
 Name: Stalker
 Order: -1
