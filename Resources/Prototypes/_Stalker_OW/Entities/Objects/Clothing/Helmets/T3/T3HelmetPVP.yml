@@ -304,8 +304,8 @@
 - type: entity
   parent: STOWClothingHeadHelmetT3PVPAltMaskBase
   id: STOWClothingHeadHelmetT3PVPAltMaskSkull3
-  name: Spiked Visage
-  description: A horned animal's skull with steel plates and a cover to the back
+  name: Wolf Visage
+  description: A houndlike animal's skull with steel plates and a cover to the back
   components:
   - type: Sprite
     sprite: _Stalker_OW\Objects\Helmets\ZenithSkull5.rsi
