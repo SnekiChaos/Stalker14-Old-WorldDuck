@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/09/2026 00:54:25
-  entityCount: 16375
+  time: 09/09/2026 07:29:50
+  entityCount: 16383
 maps:
 - 1
 grids:
@@ -35363,11 +35363,6 @@ entities:
       parent: 1
 - proto: BlueCrate
   entities:
-  - uid: 372
-    components:
-    - type: Transform
-      pos: 39.5,19.5
-      parent: 1
   - uid: 373
     components:
     - type: Transform
@@ -45477,6 +45472,55 @@ entities:
     missingComponents:
     - Item
     - Pullable
+- proto: DimSmallLight
+  entities:
+  - uid: 8618
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 32.5,17.5
+      parent: 1
+  - uid: 8621
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 40.5,11.5
+      parent: 1
+  - uid: 8623
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 32.5,11.5
+      parent: 1
+  - uid: 8625
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 28.5,3.5
+      parent: 1
+  - uid: 8626
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 25.5,8.5
+      parent: 1
+  - uid: 8627
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 31.5,8.5
+      parent: 1
+  - uid: 8628
+    components:
+    - type: Transform
+      pos: 28.5,20.5
+      parent: 1
+  - uid: 8630
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 45.5,11.5
+      parent: 1
 - proto: DisposalBend
   entities:
   - uid: 2245
@@ -73261,17 +73305,19 @@ entities:
     - type: Transform
       pos: 39.5,13.5
       parent: 1
+- proto: MutantSpawnerBurer_1to2_25
+  entities:
+  - uid: 8615
+    components:
+    - type: Transform
+      pos: 29.5,18.5
+      parent: 1
 - proto: MutantSpawnerBurer_1to2_75
   entities:
-  - uid: 8604
+  - uid: 8633
     components:
     - type: Transform
-      pos: 27.5,18.5
-      parent: 1
-  - uid: 8621
-    components:
-    - type: Transform
-      pos: 46.5,9.5
+      pos: 56.5,17.5
       parent: 1
 - proto: MutantSpawnerCanineT2_1to4_50
   entities:
@@ -73432,6 +73478,11 @@ entities:
       parent: 1
 - proto: MutantSpawnerSnork_1to2_50
   entities:
+  - uid: 8604
+    components:
+    - type: Transform
+      pos: 46.5,9.5
+      parent: 1
   - uid: 10910
     components:
     - type: Transform
@@ -73466,11 +73517,6 @@ entities:
       parent: 1
 - proto: MutantSpawnerSnork_1to4_50
   entities:
-  - uid: 8618
-    components:
-    - type: Transform
-      pos: 56.5,16.5
-      parent: 1
   - uid: 14463
     components:
     - type: Transform
@@ -80584,6 +80630,11 @@ entities:
       rot: 3.141592653589793 rad
       pos: -185.5,-68.5
       parent: 1
+  - uid: 372
+    components:
+    - type: Transform
+      pos: 38.5,23.5
+      parent: 1
   - uid: 396
     components:
     - type: Transform
@@ -80630,6 +80681,16 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -187.5,-66.5
+      parent: 1
+  - uid: 8629
+    components:
+    - type: Transform
+      pos: 27.5,26.5
+      parent: 1
+  - uid: 8631
+    components:
+    - type: Transform
+      pos: 46.5,19.5
       parent: 1
   - uid: 8853
     components:
@@ -80723,18 +80784,6 @@ entities:
     - type: Transform
       pos: -202.5,-144.5
       parent: 1
-  - uid: 8870
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 33.5,17.5
-      parent: 1
-  - uid: 8871
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 41.5,11.5
-      parent: 1
   - uid: 8872
     components:
     - type: Transform
@@ -80745,12 +80794,6 @@ entities:
     components:
     - type: Transform
       pos: -195.5,-68.5
-      parent: 1
-  - uid: 8875
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 32.5,11.5
       parent: 1
   - uid: 8876
     components:
@@ -100153,6 +100196,11 @@ entities:
       parent: 1
 - proto: STCacheT3Spawner5
   entities:
+  - uid: 8624
+    components:
+    - type: Transform
+      pos: 59.5,16.5
+      parent: 1
   - uid: 12886
     components:
     - type: Transform
@@ -119094,6 +119142,13 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 24.5,13.5
       parent: 1
+- proto: WarmSmallLight
+  entities:
+  - uid: 8632
+    components:
+    - type: Transform
+      pos: 42.5,19.5
+      parent: 1
 - proto: WarpPoint
   entities:
   - uid: 8782
@@ -121010,11 +121065,6 @@ entities:
       parent: 1
 - proto: WoodenGreenBox4
   entities:
-  - uid: 16581
-    components:
-    - type: Transform
-      pos: 36.5,1.5
-      parent: 1
   - uid: 16582
     components:
     - type: Transform

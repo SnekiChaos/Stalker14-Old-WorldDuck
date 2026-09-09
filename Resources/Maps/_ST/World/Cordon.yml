@@ -4,7 +4,7 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/09/2026 01:48:49
+  time: 09/09/2026 06:46:59
   entityCount: 22683
 maps:
 - 1
@@ -114211,6 +114211,20 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+  - uid: 3225
+    components:
+    - type: Transform
+      pos: 51.5,331.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 3248
+    components:
+    - type: Transform
+      pos: 61.5,331.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 3316
     components:
     - type: Transform
@@ -114281,6 +114295,20 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
+  - uid: 3535
+    components:
+    - type: Transform
+      pos: 81.5,344.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 3667
+    components:
+    - type: Transform
+      pos: 41.5,350.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
   - uid: 3684
     components:
     - type: Transform
@@ -114310,6 +114338,13 @@ entities:
     - type: Fixtures
       fixtures: {}
   - uid: 3688
+    components:
+    - type: Transform
+      pos: 65.5,353.5
+      parent: 1
+    - type: Fixtures
+      fixtures: {}
+  - uid: 3706
     components:
     - type: Transform
       pos: 65.5,353.5
@@ -143016,11 +143051,6 @@ entities:
       parent: 1
 - proto: MutantSpawnerBlindDog_1to2_10
   entities:
-  - uid: 2999
-    components:
-    - type: Transform
-      pos: 86.5,197.5
-      parent: 1
   - uid: 3166
     components:
     - type: Transform
@@ -143060,11 +143090,6 @@ entities:
     components:
     - type: Transform
       pos: 2.5,167.5
-      parent: 1
-  - uid: 4217
-    components:
-    - type: Transform
-      pos: 30.5,140.5
       parent: 1
   - uid: 4272
     components:
@@ -143206,10 +143231,10 @@ entities:
       parent: 1
 - proto: MutantSpawnerBoar_1to2_10
   entities:
-  - uid: 3248
+  - uid: 3195
     components:
     - type: Transform
-      pos: 112.5,247.5
+      pos: 118.5,254.5
       parent: 1
   - uid: 3797
     components:
@@ -143272,11 +143297,6 @@ entities:
     components:
     - type: Transform
       pos: -30.5,42.5
-      parent: 1
-  - uid: 3195
-    components:
-    - type: Transform
-      pos: 127.5,218.5
       parent: 1
   - uid: 3207
     components:
@@ -143408,11 +143428,6 @@ entities:
       parent: 1
 - proto: MutantSpawnerMatureBoar_1to2_25
   entities:
-  - uid: 3225
-    components:
-    - type: Transform
-      pos: 138.5,247.5
-      parent: 1
   - uid: 3310
     components:
     - type: Transform
@@ -143420,10 +143435,10 @@ entities:
       parent: 1
 - proto: MutantSpawnerMatureBoar_1to2_50
   entities:
-  - uid: 4248
+  - uid: 2999
     components:
     - type: Transform
-      pos: 113.5,408.5
+      pos: 119.5,411.5
       parent: 1
 - proto: MutantSpawnerPoltergeistElec_1_50
   entities:
@@ -161903,11 +161918,6 @@ entities:
     components:
     - type: Transform
       pos: 112.5,428.5
-      parent: 1
-  - uid: 4285
-    components:
-    - type: Transform
-      pos: 102.5,412.5
       parent: 1
 - proto: SpawnPointStalker
   entities:

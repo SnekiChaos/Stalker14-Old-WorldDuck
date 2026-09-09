@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/04/2026 08:46:21
-  entityCount: 20625
+  time: 09/09/2026 06:39:34
+  entityCount: 20621
 maps:
 - 1
 grids:
@@ -118098,7 +118098,7 @@ entities:
       pos: -44.5,180.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -84004.56
+      secondsUntilStateChange: -84237.875
       state: Opening
   - uid: 20960
     components:
@@ -118201,7 +118201,7 @@ entities:
       pos: -57.5,131.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -488556.6
+      secondsUntilStateChange: -488789.9
       state: Opening
   - uid: 4234
     components:
@@ -118239,7 +118239,7 @@ entities:
       pos: -66.5,125.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -488565.94
+      secondsUntilStateChange: -488799.25
       state: Opening
   - uid: 4238
     components:
@@ -118338,7 +118338,7 @@ entities:
       pos: -25.5,91.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -292868.84
+      secondsUntilStateChange: -293102.16
       state: Opening
   - uid: 4253
     components:
@@ -118561,6 +118561,11 @@ entities:
       parent: 1
 - proto: MutantSpawnerBayun_1to2_25
   entities:
+  - uid: 8
+    components:
+    - type: Transform
+      pos: -45.5,40.5
+      parent: 1
   - uid: 9013
     components:
     - type: Transform
@@ -118593,22 +118598,10 @@ entities:
       parent: 1
 - proto: MutantSpawnerBayun_1to2_50
   entities:
-  - uid: 5179
-    components:
-    - type: Transform
-      pos: -0.5,21.5
-      parent: 1
   - uid: 26702
     components:
     - type: Transform
       pos: -86.5,96.5
-      parent: 1
-- proto: MutantSpawnerBayun_1to4_25
-  entities:
-  - uid: 9008
-    components:
-    - type: Transform
-      pos: -45.5,41.5
       parent: 1
 - proto: MutantSpawnerBlindDog_1to2_10
   entities:
@@ -118649,6 +118642,11 @@ entities:
       parent: 1
 - proto: MutantSpawnerBlindDog_1to2_25
   entities:
+  - uid: 5
+    components:
+    - type: Transform
+      pos: 1.5,24.5
+      parent: 1
   - uid: 9010
     components:
     - type: Transform
@@ -118656,11 +118654,6 @@ entities:
       parent: 1
 - proto: MutantSpawnerBlindDog_1to2_50
   entities:
-  - uid: 9009
-    components:
-    - type: Transform
-      pos: -4.5,22.5
-      parent: 1
   - uid: 29005
     components:
     - type: Transform
@@ -118672,6 +118665,11 @@ entities:
     components:
     - type: Transform
       pos: -247.5,234.5
+      parent: 1
+  - uid: 5179
+    components:
+    - type: Transform
+      pos: -175.5,258.5
       parent: 1
   - uid: 6488
     components:
@@ -118700,9 +118698,9 @@ entities:
     - type: Transform
       pos: -325.5,224.5
       parent: 1
-- proto: MutantSpawnerCanineT2_1to4_25
+- proto: MutantSpawnerCanineT2_1to3_25
   entities:
-  - uid: 8
+  - uid: 5160
     components:
     - type: Transform
       pos: -6.5,45.5
@@ -118719,34 +118717,17 @@ entities:
     - type: Transform
       pos: -208.5,225.5
       parent: 1
-  - uid: 9016
+  - uid: 5282
     components:
     - type: Transform
-      pos: -416.5,157.5
-      parent: 1
-  - uid: 9019
-    components:
-    - type: Transform
-      pos: -175.5,257.5
-      parent: 1
-- proto: MutantSpawnerMatureBear_1to2_50
-  entities:
-  - uid: 5465
-    components:
-    - type: Transform
-      pos: -448.5,157.5
+      pos: -421.5,157.5
       parent: 1
 - proto: MutantSpawnerMatureBoar_1to2_10
   entities:
-  - uid: 5
+  - uid: 5283
     components:
     - type: Transform
-      pos: -25.5,-1.5
-      parent: 1
-  - uid: 5160
-    components:
-    - type: Transform
-      pos: -7.5,-0.5
+      pos: -4.5,-2.5
       parent: 1
 - proto: MutantSpawnerMatureBoar_1to2_25
   entities:
@@ -118966,6 +118947,11 @@ entities:
       parent: 1
 - proto: MutantSpawnerSnork_1to2_50
   entities:
+  - uid: 5284
+    components:
+    - type: Transform
+      pos: -176.5,271.5
+      parent: 1
   - uid: 9026
     components:
     - type: Transform
@@ -119010,11 +118996,6 @@ entities:
     - type: Transform
       pos: -60.5,10.5
       parent: 1
-  - uid: 9028
-    components:
-    - type: Transform
-      pos: -176.5,270.5
-      parent: 1
 - proto: MutantSpawnerYoungBear_1to2_25
   entities:
   - uid: 20312
@@ -119031,20 +119012,15 @@ entities:
       parent: 1
 - proto: MutantSpawnerZombie_1to4_50
   entities:
-  - uid: 9011
+  - uid: 5285
     components:
     - type: Transform
-      pos: -408.5,167.5
+      pos: -403.5,171.5
       parent: 1
   - uid: 9030
     components:
     - type: Transform
       pos: -380.5,226.5
-      parent: 1
-  - uid: 28628
-    components:
-    - type: Transform
-      pos: -401.5,179.5
       parent: 1
 - proto: NoticeBoard
   entities:
@@ -139030,7 +139006,7 @@ entities:
       pos: -299.5,224.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -51989.47
+      secondsUntilStateChange: -52222.78
       state: Opening
   - uid: 26338
     components:
@@ -139160,7 +139136,7 @@ entities:
       pos: -298.5,224.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -51991.332
+      secondsUntilStateChange: -52224.645
       state: Opening
   - uid: 26343
     components:
