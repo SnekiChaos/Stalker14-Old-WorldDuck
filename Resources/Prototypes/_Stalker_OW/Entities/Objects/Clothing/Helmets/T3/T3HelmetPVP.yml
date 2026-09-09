@@ -290,3 +290,24 @@
     - type: Sprite
       sprite: _Stalker/Objects/Clothing/hats/VityazS3.rsi
 
+- type: entity
+  parent: STOWClothingHeadHelmetT3PVPAltMaskBase
+  id: STOWClothingHeadHelmetT3PVPAltMaskSkull2
+  name: Spiked Visage
+  description: A horned animal's skull with steel plates and a gas mask inside.
+  components:
+  - type: Sprite
+    sprite: _Stalker/Objects/Clothing/hats/VityazS1.rsi
+  - type: Clothing
+    sprite: _Stalker/Objects/Clothing/hats/VityazS1.rsi
+
+- type: entity
+  parent: STOWClothingHeadHelmetT3PVPAltMaskBase
+  id: STOWClothingHeadHelmetT3PVPAltMaskSkull3
+  name: Spiked Visage
+  description: A horned animal's skull with steel plates and a cover to the back
+  components:
+  - type: Sprite
+    sprite: _Stalker_OW\Objects\Helmets\ZenithSkull5.rsi
+  - type: Clothing
+    sprite: _Stalker_OW\Objects\Helmets\ZenithSkull5.rsi
