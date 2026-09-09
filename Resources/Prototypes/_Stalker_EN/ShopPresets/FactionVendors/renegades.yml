@@ -495,20 +495,17 @@
   - name: shop-category-weapons
     priority: 1
     items:
+      # Shotguns
+      STWeaponShotgunBenelliM4Super90: 4
       # 5,45x39
-      STWeaponRifleAKS74U: 3
-      STWeaponRifleAKS74: 5
-      STWeaponRifleRPK74Vedma: 14
-      STWeaponRifleOC14Liturgia: 9
+      STWeaponRifleRPK74Vedma: 8
+      STWeaponRifleOC14Liturgia: 8
       # 5.56
-      STWeaponRifleM16: 10
+      STWeaponRifleSIG739: 10
       # SMGS
-      STWeaponSMGPPSh41: 5
-      STWeaponSMGMP5: 3
       STWeaponSMGStalkerCP2VereskLiturgy: 10
       # 7,62x39
-      STWeaponRifleAKM: 15 # Worse AKM version for cheaper
-      STWeaponSniperSKS: 3
+      STWeaponRifleAKM: 12 # Worse AKM version for cheaper
       # 7.62x54
       #STWeaponSniperSVDliturgy: 60 # frag out my renechud
       # explosive
@@ -516,9 +513,10 @@
   - name: shop-category-magazines
     priority: 2
     items:
+      545Mag45: 1
       739Mag30: 1
       Base545MagRPK: 2
-      754Mag10: 4
+      #754Mag10: 4
   - name: shop-category-ammunition
     priority: 3
     items:
@@ -547,9 +545,9 @@
     items:
       # ARMOR
       # outerClothing
-      STClothingOuterArmorLightPlateVestBasePSZ7rene: 38
+      STClothingOuterArmorLightPlateVestBasePSZ7rene: 28
       # head
-      STOWClothingHeadHelmetT3PVPAltMaskSkull: 16 # T3 Zenith
-      STOWClothingHeadHelmetT3PVEMaskRenegade:  18 # T3 Vityaz
+      STOWClothingHeadHelmetT3PVPAltMaskSkull: 6 # T3 Zenith
+      STOWClothingHeadHelmetT3PVEMaskRenegade:  6 # T3 Vityaz
       # misc
       ClothingNeckToothNecklace: 1
