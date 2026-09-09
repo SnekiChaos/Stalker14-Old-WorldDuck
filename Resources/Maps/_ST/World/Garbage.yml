@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/07/2026 22:25:01
-  entityCount: 31025
+  time: 09/09/2026 01:17:40
+  entityCount: 31022
 maps:
 - 1
 grids:
@@ -14297,10 +14297,6 @@ entities:
             74175: -137.08008,365.76932
             74176: -138.15637,367.18906
             74177: -137.17792,367.18906
-        - node:
-            color: '#F9800FB2'
-            id: Grassc1
-          decals:
             74946: -72.110176,260.07404
             74947: -73.297676,260.54312
             74948: -71.797676,258.0101
@@ -74346,7 +74342,7 @@ entities:
     - type: RadiationGridResistance
     - type: NavMap
     - type: STAnomalyGeneratorTarget
-      optionsId: STSvalkaGenerationOptions
+      optionsId: STGarbageGenerationOptions
     - type: LightCycle
       minLightLevel: 0.35
       initialOffset: False
@@ -117059,7 +117055,7 @@ entities:
       pos: -76.5,214.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -10551.996
+      secondsUntilStateChange: -10757.248
       state: Opening
   - uid: 6601
     components:
@@ -117067,7 +117063,7 @@ entities:
       pos: -78.5,220.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -10550.3955
+      secondsUntilStateChange: -10755.647
       state: Opening
   - uid: 6636
     components:
@@ -117271,6 +117267,11 @@ entities:
     - type: Transform
       pos: 51.5,323.5
       parent: 1
+  - uid: 1169
+    components:
+    - type: Transform
+      pos: -122.5,199.5
+      parent: 1
   - uid: 1229
     components:
     - type: Transform
@@ -117279,27 +117280,17 @@ entities:
   - uid: 1232
     components:
     - type: Transform
-      pos: -130.5,199.5
+      pos: -107.5,93.5
       parent: 1
   - uid: 1870
     components:
     - type: Transform
       pos: -38.5,395.5
       parent: 1
-  - uid: 5556
-    components:
-    - type: Transform
-      pos: -147.5,96.5
-      parent: 1
   - uid: 7524
     components:
     - type: Transform
       pos: -55.5,88.5
-      parent: 1
-  - uid: 7526
-    components:
-    - type: Transform
-      pos: -112.5,93.5
       parent: 1
   - uid: 8988
     components:
@@ -117311,17 +117302,12 @@ entities:
     - type: Transform
       pos: 80.5,269.5
       parent: 1
-  - uid: 20680
-    components:
-    - type: Transform
-      pos: -115.5,106.5
-      parent: 1
 - proto: MutantSpawnerBayun_1to2_50
   entities:
-  - uid: 1169
+  - uid: 5557
     components:
     - type: Transform
-      pos: -62.5,71.5
+      pos: -63.5,74.5
       parent: 1
   - uid: 7312
     components:
@@ -117349,6 +117335,11 @@ entities:
       parent: 1
 - proto: MutantSpawnerBlindDog_1to2_25
   entities:
+  - uid: 438
+    components:
+    - type: Transform
+      pos: -117.5,52.5
+      parent: 1
   - uid: 481
     components:
     - type: Transform
@@ -117426,7 +117417,7 @@ entities:
   - uid: 7459
     components:
     - type: Transform
-      pos: -114.5,245.5
+      pos: -109.5,248.5
       parent: 1
   - uid: 8986
     components:
@@ -117439,11 +117430,6 @@ entities:
     components:
     - type: Transform
       pos: -32.5,334.5
-      parent: 1
-  - uid: 438
-    components:
-    - type: Transform
-      pos: -119.5,64.5
       parent: 1
   - uid: 1175
     components:
@@ -117576,11 +117562,6 @@ entities:
     components:
     - type: Transform
       pos: -37.5,413.5
-      parent: 1
-  - uid: 20699
-    components:
-    - type: Transform
-      pos: -133.5,92.5
       parent: 1
   - uid: 34905
     components:
@@ -117827,6 +117808,11 @@ entities:
     - type: Transform
       pos: -121.5,434.5
       parent: 1
+  - uid: 5556
+    components:
+    - type: Transform
+      pos: -153.5,101.5
+      parent: 1
   - uid: 20729
     components:
     - type: Transform
@@ -117838,13 +117824,6 @@ entities:
     components:
     - type: Transform
       pos: 64.5,317.5
-      parent: 1
-- proto: MutantSpawnerSnork_1to4_50
-  entities:
-  - uid: 5557
-    components:
-    - type: Transform
-      pos: -161.5,102.5
       parent: 1
 - proto: MutantSpawnerSwampT1_1to3_50
   entities:

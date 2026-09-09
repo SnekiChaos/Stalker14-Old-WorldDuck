@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/04/2026 04:46:54
-  entityCount: 16378
+  time: 09/09/2026 00:54:25
+  entityCount: 16375
 maps:
 - 1
 grids:
@@ -33273,6 +33273,8 @@ entities:
           Nitrogen: 82.10312
     - type: RadiationGridResistance
     - type: NavMap
+    - type: STAnomalyGeneratorTarget
+      optionsId: STAgropromGenerationOptions
     - type: ZoneArtifactSpawnerMapTier
       maxTier: 2
 - proto: Agro-Svalka2
@@ -73285,12 +73287,12 @@ entities:
     - type: Transform
       pos: -152.5,40.5
       parent: 1
-- proto: MutantSpawnerFlesh_1to4_50
+- proto: MutantSpawnerMatureBear_1to2_01
   entities:
-  - uid: 8606
+  - uid: 8608
     components:
     - type: Transform
-      pos: -183.5,34.5
+      pos: -193.5,-33.5
       parent: 1
 - proto: MutantSpawnerMatureBear_1to2_10
   entities:
@@ -73298,20 +73300,6 @@ entities:
     components:
     - type: Transform
       pos: -8.5,11.5
-      parent: 1
-- proto: MutantSpawnerMatureBear_1to2_25
-  entities:
-  - uid: 16682
-    components:
-    - type: Transform
-      pos: -4.5,-18.5
-      parent: 1
-- proto: MutantSpawnerMatureBear_1to2_75
-  entities:
-  - uid: 8615
-    components:
-    - type: Transform
-      pos: -152.5,-21.5
       parent: 1
 - proto: MutantSpawnerMatureBoar_1to2_25
   entities:
@@ -73332,6 +73320,11 @@ entities:
       parent: 1
 - proto: MutantSpawnerMatureBoar_1to2_50
   entities:
+  - uid: 8603
+    components:
+    - type: Transform
+      pos: -7.5,-13.5
+      parent: 1
   - uid: 10926
     components:
     - type: Transform
@@ -73347,27 +73340,10 @@ entities:
     - type: Transform
       pos: -56.5,-99.5
       parent: 1
-  - uid: 14446
-    components:
-    - type: Transform
-      pos: -8.5,-22.5
-      parent: 1
   - uid: 14447
     components:
     - type: Transform
       pos: -17.5,10.5
-      parent: 1
-- proto: MutantSpawnerOldBoar_1to2_10
-  entities:
-  - uid: 8603
-    components:
-    - type: Transform
-      pos: -171.5,-41.5
-      parent: 1
-  - uid: 8610
-    components:
-    - type: Transform
-      pos: -202.5,-41.5
       parent: 1
 - proto: MutantSpawnerOldBoar_1to4_50
   entities:
@@ -73507,15 +73483,15 @@ entities:
     - type: Transform
       pos: -167.5,22.5
       parent: 1
-  - uid: 8608
+  - uid: 8610
     components:
     - type: Transform
-      pos: -175.5,-7.5
+      pos: -180.5,1.5
       parent: 1
   - uid: 8613
     components:
     - type: Transform
-      pos: -194.5,17.5
+      pos: -197.5,24.5
       parent: 1
   - uid: 8614
     components:
@@ -108891,6 +108867,11 @@ entities:
     components:
     - type: Transform
       pos: 45.5,11.5
+      parent: 1
+  - uid: 8606
+    components:
+    - type: Transform
+      pos: 24.5,14.5
       parent: 1
 - proto: STToxicBarrel2
   entities:

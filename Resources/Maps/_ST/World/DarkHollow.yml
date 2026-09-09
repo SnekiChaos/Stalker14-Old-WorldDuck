@@ -75477,7 +75477,7 @@ entities:
       maxTier: 1
     - type: MapEmissionLightningTarget
     - type: STAnomalyGeneratorTarget
-      optionsId: STTemnajLohinaGenerationOptions
+      optionsId: STDarkHollowGenerationOptions
 - proto: AccordionInstrument
   entities:
   - uid: 918

@@ -46,7 +46,7 @@
 - type: stAnomalyGenerationOptions
   id: STGarbageGenerationOptions
   options:
-    totalCount: 300
+    totalCount: 350
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalyElectra
@@ -60,9 +60,9 @@
       - protoId: ZoneAnomalyGravi
         weight: 3
       - protoId: ZoneAnomalySpringboard
-        weight: 1
+        weight: 3
       - protoId: ZoneAnomalyVortex
-        weight: 2
+        weight: 1
       - protoId: ZoneAnomalyGlassShards
         weight: 3
       
@@ -231,7 +231,7 @@
       - protoId: ZoneAnomalyVortex
         weight: 2
       - protoId: ZoneAnomalyGlassShards
-        weight: 2
+        weight: 1
       
       # Thermal
       - protoId: ZoneAnomalyJarka
@@ -367,24 +367,24 @@
         weight: 3
       # Gravity
       - protoId: ZoneAnomalyNoGravity
-        weight: 0.95
+        weight: 1
       - protoId: ZoneAnomalyBurden
-        weight: 0.95
+        weight: 1
       - protoId: ZoneAnomalyGravi
-        weight: 1.5
+        weight: 3
       - protoId: ZoneAnomalySpringboard
-        weight: 1
+        weight: 3
       - protoId: ZoneAnomalyPulse
-        weight: 1
+        weight: 3
       # Thermal
       - protoId: ZoneAnomalySteam
         weight: 2
       # Psy
       - protoId: ZoneAnomalyBarabashka
-        weight: 0.5
+        weight: 1
       # Special
       - protoId: ZoneAnomalyBeer
-        weight: 0.3
+        weight: 0.1
 
 # Yantar
 - type: stAnomalyGenerationOptions

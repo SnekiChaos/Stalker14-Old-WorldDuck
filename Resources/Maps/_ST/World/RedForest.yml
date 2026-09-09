@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/04/2026 06:06:13
-  entityCount: 22616
+  time: 09/09/2026 01:52:05
+  entityCount: 22597
 maps:
 - 1
 grids:
@@ -128767,6 +128767,11 @@ entities:
       parent: 1
 - proto: MutantSpawnerOldBear_1to2_75
   entities:
+  - uid: 59
+    components:
+    - type: Transform
+      pos: 64.5,4.5
+      parent: 1
   - uid: 5854
     components:
     - type: Transform
@@ -128885,6 +128890,11 @@ entities:
     - type: Transform
       pos: 83.5,139.5
       parent: 1
+  - uid: 471
+    components:
+    - type: Transform
+      pos: 46.5,-30.5
+      parent: 1
   - uid: 3510
     components:
     - type: Transform
@@ -128904,11 +128914,6 @@ entities:
     components:
     - type: Transform
       pos: 122.5,-45.5
-      parent: 1
-  - uid: 5759
-    components:
-    - type: Transform
-      pos: 49.5,-25.5
       parent: 1
   - uid: 6917
     components:
@@ -142371,50 +142376,10 @@ entities:
     - type: Transform
       pos: 134.5,-64.5
       parent: 1
-  - uid: 3669
-    components:
-    - type: Transform
-      pos: 45.5,6.5
-      parent: 1
-  - uid: 9565
-    components:
-    - type: Transform
-      pos: 55.5,5.5
-      parent: 1
-  - uid: 9600
-    components:
-    - type: Transform
-      pos: 63.5,-43.5
-      parent: 1
-  - uid: 9603
-    components:
-    - type: Transform
-      pos: 65.5,-25.5
-      parent: 1
   - uid: 9762
     components:
     - type: Transform
       pos: 119.5,-49.5
-      parent: 1
-  - uid: 9777
-    components:
-    - type: Transform
-      pos: 66.5,-3.5
-      parent: 1
-  - uid: 9784
-    components:
-    - type: Transform
-      pos: 63.5,1.5
-      parent: 1
-  - uid: 9802
-    components:
-    - type: Transform
-      pos: 64.5,-32.5
-      parent: 1
-  - uid: 9821
-    components:
-    - type: Transform
-      pos: 66.5,-40.5
       parent: 1
   - uid: 9844
     components:
@@ -142436,55 +142401,10 @@ entities:
     - type: Transform
       pos: 107.5,-23.5
       parent: 1
-  - uid: 10441
-    components:
-    - type: Transform
-      pos: 44.5,25.5
-      parent: 1
-  - uid: 10442
-    components:
-    - type: Transform
-      pos: 49.5,25.5
-      parent: 1
-  - uid: 10483
-    components:
-    - type: Transform
-      pos: 69.5,-19.5
-      parent: 1
   - uid: 10486
     components:
     - type: Transform
       pos: 121.5,-40.5
-      parent: 1
-  - uid: 10487
-    components:
-    - type: Transform
-      pos: 43.5,14.5
-      parent: 1
-  - uid: 10488
-    components:
-    - type: Transform
-      pos: 40.5,10.5
-      parent: 1
-  - uid: 10512
-    components:
-    - type: Transform
-      pos: 45.5,17.5
-      parent: 1
-  - uid: 10527
-    components:
-    - type: Transform
-      pos: 66.5,6.5
-      parent: 1
-  - uid: 10539
-    components:
-    - type: Transform
-      pos: 60.5,3.5
-      parent: 1
-  - uid: 10546
-    components:
-    - type: Transform
-      pos: 52.5,3.5
       parent: 1
   - uid: 12051
     components:
@@ -142495,23 +142415,6 @@ entities:
     components:
     - type: Transform
       pos: 81.5,-26.5
-      parent: 1
-- proto: SpawnerZoneAnomalyRandomWeakChance10
-  entities:
-  - uid: 59
-    components:
-    - type: Transform
-      pos: 65.5,-11.5
-      parent: 1
-  - uid: 471
-    components:
-    - type: Transform
-      pos: 60.5,-13.5
-      parent: 1
-  - uid: 10066
-    components:
-    - type: Transform
-      pos: 64.5,-21.5
       parent: 1
 - proto: SpawnerZoneAnomalySolChance25
   entities:
@@ -196045,7 +195948,7 @@ entities:
       pos: 85.5,93.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -2145.9407
+      secondsUntilStateChange: -2300.6992
       state: Opening
   - uid: 22662
     components:
