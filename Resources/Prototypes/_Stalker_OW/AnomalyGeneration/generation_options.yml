@@ -83,7 +83,7 @@
 - type: stAnomalyGenerationOptions
   id: STAgropromGenerationOptions
   options:
-    totalCount: 300
+    totalCount: 250
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource
@@ -161,7 +161,7 @@
 - type: stAnomalyGenerationOptions
   id: STDarkValleyGenerationOptions
   options:
-    totalCount: 300
+    totalCount: 250
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource
@@ -351,7 +351,7 @@
 - type: stAnomalyGenerationOptions
   id: STGreatSwampsGenerationOptions
   options:
-    totalCount: 380
+    totalCount: 350
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource
