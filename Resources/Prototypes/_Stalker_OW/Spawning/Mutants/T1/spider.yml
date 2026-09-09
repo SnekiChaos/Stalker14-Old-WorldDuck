@@ -11,7 +11,7 @@
         - MobMutantSpiderLapach
       restricted:
         - MobMutantSpiderLapach
-      cooldown: 900 # 15 minutes
+      cooldown: 1200 # 20 minutes
 
 # General use
 - type: entity
