@@ -11,8 +11,7 @@
         - STMobMutantBearT2
       restricted:
         - STMobMutantBearT2
-      cooldown: 1200 # 20 minutes
-
+      
 # General use
 - type: entity
   id: MutantSpawnerMatureBear_1to2_10

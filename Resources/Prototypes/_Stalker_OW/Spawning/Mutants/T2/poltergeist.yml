@@ -15,7 +15,6 @@
         - MobMutantPoltergeistFire
         - MobMutantPoltergeistIce
         - MobMutantPoltergeistElec
-      cooldown: 1200 # 20 minutes
 
 # Fire poltergeists
 # General use
