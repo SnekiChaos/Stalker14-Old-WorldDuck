@@ -46,7 +46,7 @@
 - type: stAnomalyGenerationOptions
   id: STGarbageGenerationOptions
   options:
-    totalCount: 350
+    totalCount: 320
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalyElectra
@@ -58,13 +58,13 @@
       - protoId: ZoneAnomalyBurden
         weight: 1
       - protoId: ZoneAnomalyGravi
-        weight: 3
+        weight: 4
       - protoId: ZoneAnomalySpringboard
-        weight: 3
+        weight: 4
       - protoId: ZoneAnomalyVortex
         weight: 1
       - protoId: ZoneAnomalyGlassShards
-        weight: 3
+        weight: 2
       
       # Thermal
       - protoId: ZoneAnomalyJarka
@@ -76,7 +76,7 @@
       
       # Special
       - protoId: ZoneAnomalyBeer
-        weight: 1
+        weight: 0.1
 
 
 # Agroprom - Stalker EN
