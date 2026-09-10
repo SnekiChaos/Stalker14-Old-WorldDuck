@@ -52,17 +52,17 @@
       - protoId: ZoneAnomalyElectra
         weight: 3
       - protoId: ZoneAnomalyGarland
-        weight: 2
+        weight: 4
       
       # Gravity
       - protoId: ZoneAnomalyBurden
-        weight: 1
+        weight: 2
       - protoId: ZoneAnomalyGravi
-        weight: 4
+        weight: 5
       - protoId: ZoneAnomalySpringboard
         weight: 4
       - protoId: ZoneAnomalyVortex
-        weight: 2
+        weight: 1
       - protoId: ZoneAnomalyGlassShards
         weight: 1
       
@@ -87,27 +87,27 @@
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource
-        weight: 1
+        weight: 2
       - protoId: ZoneAnomalyElectra
         weight: 2
       - protoId: ZoneAnomalyGarland
-        weight: 1
+        weight: 2
       # Chemical
       - protoId: ZoneAnomalySmoke
-        weight: 4
+        weight: 2
       - protoId: ZoneAnomalyGazirovka
-        weight: 5
+        weight: 2
       - protoId: ZoneAnomalyKissel
-        weight: 4
+        weight: 3
       # Gravity
       - protoId: ZoneAnomalyBurden
         weight: 2
       - protoId: ZoneAnomalyNoGravity
         weight: 2
       - protoId: ZoneAnomalyGravi
-        weight: 4
+        weight: 5
       - protoId: ZoneAnomalyVortex
-        weight: 4
+        weight: 1
       - protoId: ZoneAnomalyGlassShards
         weight: 1
       # Thermal
@@ -161,7 +161,7 @@
 - type: stAnomalyGenerationOptions
   id: STDarkValleyGenerationOptions
   options:
-    totalCount: 250
+    totalCount: 275
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource
@@ -169,20 +169,20 @@
       - protoId: ZoneAnomalyElectra
         weight: 4
       - protoId: ZoneAnomalyGarland
-        weight: 3
+        weight: 4
       # Gravity
       - protoId: ZoneAnomalyNoGravity
         weight: 1
       - protoId: ZoneAnomalyBurden
         weight: 2
       - protoId: ZoneAnomalyGravi
-        weight: 5
+        weight: 4
       - protoId: ZoneAnomalySpringboard
         weight: 3
       - protoId: ZoneAnomalyGrabber
-        weight: 4
-      - protoId: ZoneAnomalyVortex
         weight: 2
+      - protoId: ZoneAnomalyVortex
+        weight: 1
       - protoId: ZoneAnomalyGlassShards
         weight: 1
       # Thermal
@@ -192,7 +192,7 @@
         weight: 3
       # Psy
       - protoId: ZoneAnomalyBarabashka # Thief
-        weight: 2
+        weight: 1
       - protoId: ZoneAnomalyRift
         weight: 3
       # Special
