@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/09/2026 23:39:43
-  entityCount: 16385
+  time: 09/10/2026 00:30:25
+  entityCount: 16384
 maps:
 - 1
 grids:
@@ -73319,12 +73319,12 @@ entities:
     - type: Transform
       pos: 28.5,18.5
       parent: 1
-- proto: MutantSpawnerCanineT2_1to4_50
+- proto: MutantSpawnerCanineT2_1to3_25
   entities:
-  - uid: 8622
+  - uid: 8611
     components:
     - type: Transform
-      pos: -85.5,-51.5
+      pos: -87.5,-53.5
       parent: 1
 - proto: MutantSpawnerFlesh_1to2_10
   entities:
@@ -73335,15 +73335,15 @@ entities:
       parent: 1
 - proto: MutantSpawnerFlesh_1to2_50
   entities:
-  - uid: 8611
-    components:
-    - type: Transform
-      pos: -181.5,0.5
-      parent: 1
   - uid: 8612
     components:
     - type: Transform
       pos: -198.5,24.5
+      parent: 1
+  - uid: 8614
+    components:
+    - type: Transform
+      pos: -181.5,-0.5
       parent: 1
 - proto: MutantSpawnerMatureBear_1to2_01
   entities:
@@ -73533,11 +73533,6 @@ entities:
     components:
     - type: Transform
       pos: -167.5,22.5
-      parent: 1
-  - uid: 8614
-    components:
-    - type: Transform
-      pos: -203.5,-14.5
       parent: 1
 - proto: MutantSpawnerSwampT2_1to3_50
   entities:
