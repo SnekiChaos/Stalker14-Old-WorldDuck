@@ -117806,25 +117806,6 @@ entities:
     - type: Transform
       pos: 28.5,156.5
       parent: 1
-- proto: MutantSpawnerSnork_1to2_50
-  entities:
-  - uid: 1151
-    components:
-    - type: Transform
-      pos: -121.5,434.5
-      parent: 1
-  - uid: 20729
-    components:
-    - type: Transform
-      pos: -14.5,88.5
-      parent: 1
-- proto: MutantSpawnerSnork_1to4_25
-  entities:
-  - uid: 1201
-    components:
-    - type: Transform
-      pos: 64.5,317.5
-      parent: 1
 - proto: MutantSpawnerSwampT1_1to3_50
   entities:
   - uid: 915
