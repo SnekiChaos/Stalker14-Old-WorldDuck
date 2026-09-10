@@ -33,7 +33,6 @@
         - MobStalkerZombieMilitary2
         - MobStalkerZombieMilitary3
         - MobStalkerZombiePolice1
-      cooldown: 1200 # 20 minutes
       
 # General use
 - type: entity

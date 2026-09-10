@@ -41,7 +41,7 @@
       maxAmount: 3
       chance: 0.50
       
-# T3
+# T3 - Unused as of now
 - type: entity
   id: MutantSpawnerNorthernWildcardT3Base
   parent: MutantSpawnerBase
@@ -51,24 +51,14 @@
     - type: SpawnOnApproach
       prototypes:
         - STMutantController
-        - MutantPsidog
+        - MobMutantBloodsucker
         - STMobMutantBearT3
-        - MobStalkerZombieDolg1
-        - MobStalkerZombieDolg2
-        - MobStalkerZombieEcologist1
-        - MobStalkerZombieEcologist2
-        - MobStalkerZombieFreedom1
-        - MobStalkerZombieFreedom2
+
       restricted:
         - STMutantController
-        - MutantPsidog
+        - MobMutantBloodsucker
         - STMobMutantBearT3
-        - MobStalkerZombieDolg1
-        - MobStalkerZombieDolg2
-        - MobStalkerZombieEcologist1
-        - MobStalkerZombieEcologist2
-        - MobStalkerZombieFreedom1
-        - MobStalkerZombieFreedom2
+
 
 - type: entity
   id: MutantSpawnerNorthernWildcardT3_1to2_25

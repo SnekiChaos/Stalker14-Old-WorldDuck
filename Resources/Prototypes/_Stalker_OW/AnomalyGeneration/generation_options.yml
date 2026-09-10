@@ -46,7 +46,7 @@
 - type: stAnomalyGenerationOptions
   id: STGarbageGenerationOptions
   options:
-    totalCount: 350
+    totalCount: 320
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalyElectra
@@ -58,13 +58,13 @@
       - protoId: ZoneAnomalyBurden
         weight: 1
       - protoId: ZoneAnomalyGravi
-        weight: 3
+        weight: 4
       - protoId: ZoneAnomalySpringboard
-        weight: 3
+        weight: 4
       - protoId: ZoneAnomalyVortex
-        weight: 1
+        weight: 2
       - protoId: ZoneAnomalyGlassShards
-        weight: 3
+        weight: 1
       
       # Thermal
       - protoId: ZoneAnomalyJarka
@@ -76,22 +76,22 @@
       
       # Special
       - protoId: ZoneAnomalyBeer
-        weight: 1
+        weight: 0.1
 
 
 # Agroprom - Stalker EN
 - type: stAnomalyGenerationOptions
   id: STAgropromGenerationOptions
   options:
-    totalCount: 300
+    totalCount: 200
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource
-        weight: 4
+        weight: 1
       - protoId: ZoneAnomalyElectra
-        weight: 5
+        weight: 2
       - protoId: ZoneAnomalyGarland
-        weight: 3
+        weight: 1
       # Chemical
       - protoId: ZoneAnomalySmoke
         weight: 4
@@ -103,11 +103,11 @@
       - protoId: ZoneAnomalyBurden
         weight: 2
       - protoId: ZoneAnomalyNoGravity
-        weight: 1
+        weight: 2
       - protoId: ZoneAnomalyGravi
-        weight: 3
+        weight: 4
       - protoId: ZoneAnomalyVortex
-        weight: 3
+        weight: 4
       - protoId: ZoneAnomalyGlassShards
         weight: 1
       # Thermal
@@ -161,7 +161,7 @@
 - type: stAnomalyGenerationOptions
   id: STDarkValleyGenerationOptions
   options:
-    totalCount: 300
+    totalCount: 250
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource
@@ -351,7 +351,7 @@
 - type: stAnomalyGenerationOptions
   id: STGreatSwampsGenerationOptions
   options:
-    totalCount: 380
+    totalCount: 350
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource

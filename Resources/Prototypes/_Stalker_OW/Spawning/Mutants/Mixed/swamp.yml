@@ -12,14 +12,13 @@
       prototypes:
         - MobMutantBoar
         - MobMutantFleshAggressive
-        - MobMutantCat
+        - MobMutantBush
         - MobMutantSeer
       restricted:
         - MobMutantBoar
         - MobMutantFleshAggressive
-        - MobMutantCat
+        - MobMutantBush
         - MobMutantSeer
-
 
 - type: entity
   id: MutantSpawnerSwampT1_1to3_25
@@ -41,7 +40,6 @@
       minAmount: 1
       maxAmount: 3
       chance: 0.50
-
 
 # T2
 - type: entity
@@ -69,7 +67,6 @@
       minAmount: 1
       maxAmount: 3
       chance: 0.25
-
 
 - type: entity
   id: MutantSpawnerSwampT2_1to3_50
