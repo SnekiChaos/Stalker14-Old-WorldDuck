@@ -3704,5 +3704,30 @@
   id: 417
   time: '2026-09-09T19:16:58.386101+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/39
+- author: kuro964
+  changes:
+  - message: Fixed anomaly generation in Agro electric field
+    type: Fix
+  - message: Snork snork snork sahur no longer spawns in Cordon or Garbage
+    type: Fix
+  - message: T1 mutant spawners have CD of 20 minutes
+    type: Tweak
+  - message: T2 mutant spawners have CD of 30 minutes
+    type: Tweak
+  - message: Anomalies have been reduced across Garbage, DV, and Agroprom
+    type: Tweak
+  - message: Extended anomaly blockers in Freedom base
+    type: Tweak
+  - message: Significantly reduced mutant spawns in DV
+    type: Tweak
+  - message: Reduced mutant spawns in Agroprom
+    type: Tweak
+  - message: Reduced mutant spawns in Swamps
+    type: Tweak
+  - message: Swamp only has T1 boars now
+    type: Tweak
+  id: 418
+  time: '2026-09-10T00:46:35.214420+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/41
 Name: Stalker
 Order: -1
