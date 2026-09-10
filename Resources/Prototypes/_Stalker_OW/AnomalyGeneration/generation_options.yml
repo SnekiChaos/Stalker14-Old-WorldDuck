@@ -62,9 +62,9 @@
       - protoId: ZoneAnomalySpringboard
         weight: 4
       - protoId: ZoneAnomalyVortex
-        weight: 1
-      - protoId: ZoneAnomalyGlassShards
         weight: 2
+      - protoId: ZoneAnomalyGlassShards
+        weight: 1
       
       # Thermal
       - protoId: ZoneAnomalyJarka
@@ -83,15 +83,15 @@
 - type: stAnomalyGenerationOptions
   id: STAgropromGenerationOptions
   options:
-    totalCount: 250
+    totalCount: 200
     anomalyEntries:
       # Electrical
       - protoId: ZoneAnomalySource
-        weight: 4
+        weight: 1
       - protoId: ZoneAnomalyElectra
-        weight: 5
+        weight: 2
       - protoId: ZoneAnomalyGarland
-        weight: 3
+        weight: 1
       # Chemical
       - protoId: ZoneAnomalySmoke
         weight: 4
@@ -103,11 +103,11 @@
       - protoId: ZoneAnomalyBurden
         weight: 2
       - protoId: ZoneAnomalyNoGravity
-        weight: 1
+        weight: 2
       - protoId: ZoneAnomalyGravi
-        weight: 3
+        weight: 4
       - protoId: ZoneAnomalyVortex
-        weight: 3
+        weight: 4
       - protoId: ZoneAnomalyGlassShards
         weight: 1
       # Thermal
