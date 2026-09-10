@@ -20631,22 +20631,6 @@ entities:
     - type: Transform
       pos: 0.5,1.5
       parent: 1
-- proto: STTriggerFleshNeutral125010
-  entities:
-  - uid: 975
-    components:
-    - type: Transform
-      pos: -0.5,3.5
-      parent: 1
-    - type: SpawnOnApproach
-      spawnNearPlayers: True
-      chance: 1
-      minOffset: 0
-      maxOffset: 0
-      maxAmount: 1
-    - type: ApproachTrigger
-      minRange: 5
-      range: 5
 - proto: ToolkitTearOne
   entities:
   - uid: 943
