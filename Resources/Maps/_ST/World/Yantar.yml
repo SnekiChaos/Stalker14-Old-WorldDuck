@@ -4,8 +4,8 @@ meta:
   engineVersion: 268.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/17/2026 09:23:02
-  entityCount: 7581
+  time: 09/18/2026 16:55:41
+  entityCount: 7596
 maps:
 - 1
 grids:
@@ -24429,11 +24429,15 @@ entities:
     - type: Transform
       pos: -36.5,-115.5
       parent: 1
+    - type: RadiationSource
+      intensity: 3
   - uid: 6662
     components:
     - type: Transform
       pos: -31.5,-119.5
       parent: 1
+    - type: RadiationSource
+      intensity: 2
 - proto: AnomalyHeatPsy4
   entities:
   - uid: 7227
@@ -24441,11 +24445,22 @@ entities:
     - type: Transform
       pos: -41.5,-147.5
       parent: 1
+    - type: RadiationSource
+      intensity: 6
   - uid: 7228
     components:
     - type: Transform
       pos: -39.5,-148.5
       parent: 1
+    - type: RadiationSource
+      intensity: 5
+  - uid: 7376
+    components:
+    - type: Transform
+      pos: -14.5,-61.5
+      parent: 1
+    - type: RadiationSource
+      intensity: 3
 - proto: BagPotato1
   entities:
   - uid: 5332
@@ -44600,36 +44615,6 @@ entities:
     - type: Transform
       pos: 32.5,90.5
       parent: 1
-  - uid: 6436
-    components:
-    - type: Transform
-      pos: -43.5,-105.5
-      parent: 1
-  - uid: 6437
-    components:
-    - type: Transform
-      pos: -45.5,-108.5
-      parent: 1
-  - uid: 6438
-    components:
-    - type: Transform
-      pos: -42.5,-107.5
-      parent: 1
-  - uid: 6439
-    components:
-    - type: Transform
-      pos: -49.5,-108.5
-      parent: 1
-  - uid: 6440
-    components:
-    - type: Transform
-      pos: -45.5,-104.5
-      parent: 1
-  - uid: 6441
-    components:
-    - type: Transform
-      pos: -42.5,-109.5
-      parent: 1
 - proto: SpawnerZoneAnomalyChemicalGroupChance25
   entities:
   - uid: 6078
@@ -44641,26 +44626,6 @@ entities:
     components:
     - type: Transform
       pos: 34.5,92.5
-      parent: 1
-  - uid: 6442
-    components:
-    - type: Transform
-      pos: -38.5,-107.5
-      parent: 1
-  - uid: 6443
-    components:
-    - type: Transform
-      pos: -42.5,-112.5
-      parent: 1
-  - uid: 6444
-    components:
-    - type: Transform
-      pos: -47.5,-112.5
-      parent: 1
-  - uid: 6445
-    components:
-    - type: Transform
-      pos: -48.5,-104.5
       parent: 1
 - proto: SpawnerZoneAnomalyChemicalGroupChance5
   entities:
@@ -46029,6 +45994,60 @@ entities:
     components:
     - type: Transform
       pos: -56.5,98.5
+      parent: 1
+- proto: SpawnerZoneAnomalyKisselChance100
+  entities:
+  - uid: 6437
+    components:
+    - type: Transform
+      pos: -45.5,-108.5
+      parent: 1
+  - uid: 6438
+    components:
+    - type: Transform
+      pos: -42.5,-107.5
+      parent: 1
+  - uid: 6441
+    components:
+    - type: Transform
+      pos: -43.5,-106.5
+      parent: 1
+- proto: SpawnerZoneAnomalyKisselChance50
+  entities:
+  - uid: 6436
+    components:
+    - type: Transform
+      pos: -47.5,-112.5
+      parent: 1
+  - uid: 6439
+    components:
+    - type: Transform
+      pos: -49.5,-109.5
+      parent: 1
+  - uid: 6440
+    components:
+    - type: Transform
+      pos: -42.5,-112.5
+      parent: 1
+  - uid: 6442
+    components:
+    - type: Transform
+      pos: -38.5,-107.5
+      parent: 1
+  - uid: 6443
+    components:
+    - type: Transform
+      pos: -45.5,-104.5
+      parent: 1
+  - uid: 6444
+    components:
+    - type: Transform
+      pos: -43.5,-105.5
+      parent: 1
+  - uid: 6445
+    components:
+    - type: Transform
+      pos: -43.5,-108.5
       parent: 1
 - proto: SpawnerZoneAnomalySolChance100
   entities:
@@ -47817,6 +47836,46 @@ entities:
     - type: Transform
       pos: -75.5,41.5
       parent: 1
+  - uid: 6477
+    components:
+    - type: Transform
+      pos: -16.5,-133.5
+      parent: 1
+  - uid: 6478
+    components:
+    - type: Transform
+      pos: -9.5,-122.5
+      parent: 1
+  - uid: 6480
+    components:
+    - type: Transform
+      pos: -46.5,-107.5
+      parent: 1
+  - uid: 6481
+    components:
+    - type: Transform
+      pos: -33.5,-139.5
+      parent: 1
+  - uid: 6482
+    components:
+    - type: Transform
+      pos: -29.5,-133.5
+      parent: 1
+  - uid: 6590
+    components:
+    - type: Transform
+      pos: -40.5,-147.5
+      parent: 1
+  - uid: 7368
+    components:
+    - type: Transform
+      pos: -24.5,-129.5
+      parent: 1
+  - uid: 7369
+    components:
+    - type: Transform
+      pos: -20.5,-125.5
+      parent: 1
   - uid: 7532
     components:
     - type: Transform
@@ -47833,6 +47892,36 @@ entities:
     components:
     - type: Transform
       pos: -29.5,37.5
+      parent: 1
+  - uid: 7370
+    components:
+    - type: Transform
+      pos: -28.5,-103.5
+      parent: 1
+  - uid: 7371
+    components:
+    - type: Transform
+      pos: -24.5,-101.5
+      parent: 1
+  - uid: 7372
+    components:
+    - type: Transform
+      pos: -18.5,-103.5
+      parent: 1
+  - uid: 7373
+    components:
+    - type: Transform
+      pos: -18.5,-110.5
+      parent: 1
+  - uid: 7374
+    components:
+    - type: Transform
+      pos: -24.5,-116.5
+      parent: 1
+  - uid: 7375
+    components:
+    - type: Transform
+      pos: -35.5,-108.5
       parent: 1
   - uid: 7527
     components:
