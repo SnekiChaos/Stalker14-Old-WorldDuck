@@ -3909,5 +3909,12 @@
   id: 435
   time: '2026-09-19T10:30:31.117720+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/73
+- author: Allias12
+  changes:
+  - message: Adds RPK mags to Mili store
+    type: Tweak
+  id: 436
+  time: '2026-09-19T23:58:39.424461+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/74
 Name: Stalker
 Order: -1
