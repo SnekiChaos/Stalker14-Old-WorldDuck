@@ -24,6 +24,7 @@
       739Mag45: 1
       754Mag10: 1
       754Mag20: 2
+      Base545MagRPK: 2
 
   - name: shop-category-ammunition
     priority: 3
