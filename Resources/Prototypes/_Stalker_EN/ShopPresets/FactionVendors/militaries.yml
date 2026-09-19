@@ -11,6 +11,7 @@
       # ow changes begin
       STWeaponRifleAKMC: 1
       STWeaponRifleAK74M: 3
+      STWeaponRifleRPK74: 6
       STWeaponRifleOC14: 5
       STWeaponSniperVepr: 8 # 16k is much more reasonable
       # ow changes end

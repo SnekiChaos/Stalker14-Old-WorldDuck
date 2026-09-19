@@ -18,7 +18,13 @@
     maxAngle: 140
     angleDecay: 65
     angleIncrease: 2
-    fireRate: 0.65
+    fireRate: 0.6
+  - type: GunRequiresWield
+  - type: UseDelay
+    delay: 3
+  - type: HeldSpeedModifier
+    walkModifier: 0.6
+    sprintModifier: 0.5
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Stalker/Weapons/Guns/RifleGen/Cock/rifle_cock.ogg

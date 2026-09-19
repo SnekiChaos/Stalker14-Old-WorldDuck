@@ -18,9 +18,9 @@
       params:
         volume: -2
     minAngle: 50
-    maxAngle: 100
+    maxAngle: 120
     angleIncrease: 4
-    angleDecay: 27.5
+    angleDecay: 20
   - type: ItemSlots
     slots:
       gun_magazine:

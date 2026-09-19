@@ -24,6 +24,12 @@
     angleIncrease: 5
     angleDecay: 25
     fireRate: 0.6
+  - type: GunRequiresWield
+  - type: UseDelay
+    delay: 2
+  - type: HeldSpeedModifier
+    walkModifier: 0.6
+    sprintModifier: 0.5
   - type: BallisticAmmoProvider
     capacity: 5
     whitelist:

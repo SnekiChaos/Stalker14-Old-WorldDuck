@@ -9,15 +9,21 @@
   - type: GunWieldBonus
     minAngle: -45
     maxAngle: -55
+  - type: GunRequiresWield
   - type: PullDoAfter
     pullTime: 4
+  - type: UseDelay
+    delay: 1
   - type: Gun
     minAngle: 50
-    maxAngle: 125
-    angleIncrease: 1.3
-    angleDecay: 5
-    projectileSpeed: 55
-    fireRate: 6.5
+    maxAngle: 100
+    angleIncrease: 1
+    angleDecay: 8
+    projectileSpeed: 60
+    fireRate: 8
+  - type: HeldSpeedModifier
+    walkModifier: 0.6
+    sprintModifier: 0.5
   - type: Clothing
     sprite: _Stalker/Objects/Weapons/Guns/Rifles/inhands/RPK-74mag.rsi
   - type: Item

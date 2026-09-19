@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: STBaseWeaponSMG
+  parent: STBaseWeaponPistol
   id: STBaseWeaponSMGViper
   components:
   - type: STWeight
@@ -13,11 +13,14 @@
   - type: Sprite
     sprite: _Stalker/Objects/Weapons/Guns/SMGs/vz61.rsi
   - type: Gun
-    minAngle: 45
+    minAngle: 30
     maxAngle: 90
     angleIncrease: 2
     angleDecay: 25
     fireRate: 10
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
     soundGunshot:
       path: /Audio/_Stalker/Effects/Guns/919.ogg
   - type: ItemSlots

@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: STBaseWeaponSniper
+  parent: STBaseWeaponRifle
   id: STBaseWeaponSniperSKS
   components:
   - type: STWeight
@@ -18,9 +18,9 @@
     soundGunshot:
       path: /Audio/_Stalker/Effects/Guns/sks_shoot.ogg
     minAngle: 50
-    maxAngle: 85
-    angleIncrease: 1.5
-    angleDecay: 30
+    maxAngle: 110
+    angleIncrease: 3
+    angleDecay: 25
     fireRate: 2
   - type: BallisticAmmoProvider
     capacity: 10
