@@ -3887,5 +3887,14 @@
   id: 433
   time: '2026-09-18T21:46:14.445228+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/71
+- author: kuro964
+  changes:
+  - message: Tweaked Yantar overgrown bunker
+    type: Tweak
+  - message: Yantar caches tweaked
+    type: Tweak
+  id: 434
+  time: '2026-09-19T10:17:40.785730+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/72
 Name: Stalker
 Order: -1
