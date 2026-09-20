@@ -135,6 +135,9 @@
 
         # .357
         MagazineBox357MagnumHP: 1500 # Mutant
+        
+        # Bolts
+        STBroadheadBolt: 250 # Mutant
       
     - name: shop-category-blueprints
       priority: 2

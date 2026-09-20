@@ -49,6 +49,11 @@
       moles:
         - 2.051379050 # oxygen
       temperature: 293.15
+  # ST:OW
+  - type: UseDelay
+    delays:
+      gasTank:
+        length: 1.0
 
 # Zarya
 
