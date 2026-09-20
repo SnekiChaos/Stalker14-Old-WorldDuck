@@ -59,9 +59,9 @@
     armorClass: 2
     modifiers:
       coefficients:
-        Burn: 0.1
-        Toxin: 0.1
-        Airloss: 0.1
+        Heat: 0.1
+        Poison: 0.1
+        Asphyxiation: 0.1
         Psy: 0.1
         Radiation: 0.1
         Compression: 0.9
