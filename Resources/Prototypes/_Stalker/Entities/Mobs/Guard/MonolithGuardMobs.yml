@@ -38,8 +38,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      50: Critical
-      61: Dead
+      70: Critical
+      90: Dead
   - type: PassiveDamage
     allowedStates:
     - Alive
@@ -51,6 +51,23 @@
         Airloss: -100
         Psy: -100
         Radiation: -100
+        Compression: -1000 # ST:OW Change Start
+        Shock: -100
+        Caustic: -100
+  - type: Armor
+    hiddenExamine: true
+    armorClass: 2
+    modifiers:
+      coefficients:
+        Heat: 0.1
+        Poison: 0.1
+        Asphyxiation: 0.1
+        Psy: 0.1
+        Radiation: 0.1
+        Compression: 0.9
+        Shock: 0.1
+        Caustic: 0.1 # ST:OW Change End : WHY THE FUCK DOES IT STILL DIE TO MEGA MULCHERS GOD??
+        Mutant: 1
   - type: Destructible
     thresholds:
     - trigger:

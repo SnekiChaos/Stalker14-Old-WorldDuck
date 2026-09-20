@@ -141,7 +141,7 @@
     Cellular: 0
     Radiation: 0
     Caustic: 0.2
-    Compression: 5
+    Compression: 0
     Psy: 0
     Mutant: 0
   flatReductions:
