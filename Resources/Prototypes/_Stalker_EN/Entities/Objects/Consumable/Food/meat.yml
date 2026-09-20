@@ -540,6 +540,11 @@
   id: FoodMeatSTRatRaw
   suffix: Stalker, Food
   components:
+  # ST:OW begin
+  - type: Stack
+    stackType: STOWRatMeatStack
+    count: 1
+  # ST:OW end
   - type: STWeight
     self: 0.01
   - type: FlavorProfile
@@ -573,6 +578,11 @@
   id: FoodMeatSTRatCooked
   suffix: Stalker, Food
   components:
+  # ST:OW begin
+  - type: Stack
+    stackType: STOWCookedRatMeatStack
+    count: 1
+  # ST:OW end
   - type: STWeight
     self: 0.01
   - type: Craftable
@@ -870,6 +880,13 @@
   description: Meat from the blind dogs of the zone with a thick layer of spices applies to help in the curing process. It needs to be left out to dry for a while.
   suffix: Stalker, Food
   components:
+  # ST:OW begin
+  - type: Stack
+    stackType: STOWDogMeatSpicedStack
+    count: 1
+  - type: STOWCuringStack
+    duration: 300
+  # ST:OW end
   - type: STWeight
     self: 1.0
   - type: Sprite
@@ -904,6 +921,11 @@
   description: Not the best tasting jerky in the world but stalkers of the zone can't be picky. At least it will keep well on trips.
   suffix: Stalker, Food
   components:
+  # ST:OW begin
+  - type: Stack
+    stackType: STOWDogJerkyStack
+    count: 1
+  # ST:OW end
   - type: STWeight
     self: 0.75
   - type: Sprite
@@ -938,6 +960,11 @@
   suffix: Stalker, Food
   description: Not the best tasting jerky in the world but stalkers of the zone can't be picky. At least it will keep well on trips.
   components:
+  # ST:OW begin
+  - type: Stack
+    stackType: STOWDogJerkyPieceStack
+    count: 1
+  # ST:OW end
   - type: FlavorProfile
     flavors:
     - meaty
@@ -983,6 +1010,13 @@
   description: It's more spice than meat. It won't take long to finish drying.
   suffix: Stalker, Food
   components:
+  # ST:OW begin
+  - type: Stack
+    stackType: STOWRatMeatSpicedStack
+    count: 1
+  - type: STOWCuringStack
+    duration: 20
+  # ST:OW end
   - type: STWeight
     self: 0.1
   - type: Sprite
@@ -1014,6 +1048,11 @@
   description: A few strands of flavorful rat meat.
   suffix: Stalker, Food
   components:
+  # ST:OW begin
+  - type: Stack
+    stackType: STOWRatJerkyStack
+    count: 1
+  # ST:OW end
   - type: STWeight
     self: 0.1
   - type: Sprite

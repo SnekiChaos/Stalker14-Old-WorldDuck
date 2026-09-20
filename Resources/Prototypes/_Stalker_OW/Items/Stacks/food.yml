@@ -1,0 +1,130 @@
+﻿# Meat & jerky stacks - max 3
+- type: stack
+  abstract: true
+  id: STOWBaseMeatStack
+  maxCount: 3
+
+# Raw meat
+- type: stack
+  parent: STOWBaseMeatStack
+  id: STOWDogMeatStack
+  name: stack-st-food-meat-dog
+  spawn: FoodMeatDog
+
+- type: stack
+  parent: STOWBaseMeatStack
+  id: STOWRatMeatStack
+  name: stack-st-food-meat-rat
+  spawn: FoodMeatSTRatRaw
+
+# Cooked meat
+- type: stack
+  parent: STOWBaseMeatStack
+  id: STOWCookedRatMeatStack
+  name: stack-st-food-cooked-meat-rat
+  spawn: FoodMeatSTRatCooked
+
+# Spiced meat
+- type: stack
+  parent: STOWBaseMeatStack
+  id: STOWDogMeatSpicedStack
+  name: stack-st-food-meat-dog-spiced
+  spawn: FoodMeatSTDogSpiced
+
+- type: stack
+  parent: STOWBaseMeatStack
+  id: STOWRatMeatSpicedStack
+  name: stack-st-food-meat-rat-spiced
+  spawn: FoodMeatSTRatSpiced
+
+# Jerky
+- type: stack
+  parent: STOWBaseMeatStack
+  id: STOWDogJerkyStack
+  name: stack-st-food-meat-dog-jerky
+  spawn: FoodMeatSTDogJerked
+
+- type: stack
+  parent: STOWBaseMeatStack
+  id: STOWDogJerkyPieceStack
+  name: stack-st-food-meat-dog-jerky-piece
+  spawn: FoodMeatSTDogJerkedSingle
+
+# Rat jerky
+- type: stack
+  parent: STOWBaseMeatStack
+  id: STOWRatJerkyStack
+  name: stack-st-food-meat-rat-jerky
+  spawn: FoodMeatSTRatJerked
+
+# Cooking ingredient stacks - max 10
+- type: stack
+  abstract: true
+  id: STOWIngredientBaseStack
+  maxCount: 10
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodBeansStack
+  name: stack-st-food-beans
+  spawn: FoodSTBeans
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodFreshCheeseStack
+  name: stack-st-food-fresh-cheese
+  spawn: FoodSTFreshCheese
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodFreshCheesePieceStack
+  name: stack-st-food-fresh-cheese-piece
+  spawn: FoodSTFreshCheeseSlice
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodSpiceStack
+  name: stack-st-food-spice
+  spawn: FoodSTSpice
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodYeastStack
+  name: stack-st-food-yeast
+  spawn: FoodSTYeast
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodEggStack
+  name: stack-st-food-egg
+  spawn: FoodSTEgg
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodFlourStack
+  name: stack-st-food-flour
+  spawn: FoodSTFlour
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodSugarStack
+  name: stack-st-food-sugar
+  spawn: FoodSTSugar
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodRiceStack
+  name: stack-st-food-rice
+  spawn: FoodSTRice
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodMilkStack
+  name: stack-st-food-milk
+  spawn: FoodSTMilkCarton
+
+- type: stack
+  parent: STOWIngredientBaseStack
+  id: STOWFoodOilStack
+  name: stack-st-food-oil
+  spawn: FoodSTOil

@@ -5,6 +5,13 @@
   id: FoodSTBeans
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodBeansStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 0.4
     - type: Item
@@ -29,6 +36,13 @@
   id: FoodSTFreshCheese
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodFreshCheeseStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 0.25
     - type: Item
@@ -58,6 +72,9 @@
   id: FoodSTFreshCheeseSlice
   suffix: Stalker, Food
   components:
+    - type: Stack # ST:OW
+      stackType: STOWFoodFreshCheesePieceStack
+      count: 1
     - type: STWeight
       self: 0.05
     - type: Item
@@ -85,8 +102,13 @@
   id: FoodSTSpice
   suffix: Stalker, Food, Ingredient
   components:
-    - type: STBulkBuyable # ST:OW
-      maxQuantity: 10 # ST:OW
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodSpiceStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 0.1
     - type: Item
@@ -115,6 +137,13 @@
   id: FoodSTYeast
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodYeastStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 0.05
     - type: Item
@@ -145,6 +174,13 @@
   id: FoodSTEgg
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodEggStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 0.05
     - type: Sprite # temp
@@ -170,6 +206,13 @@
   id: FoodSTFlour
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodFlourStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 2
     - type: Item
@@ -194,6 +237,13 @@
   id: FoodSTSugar
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodSugarStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 2
     - type: Item
@@ -221,6 +271,13 @@
   id: FoodSTRice
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodRiceStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 2
     - type: Item
@@ -246,6 +303,13 @@
   id: FoodSTMilkCarton
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodMilkStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 0.25
     - type: Item
@@ -270,6 +334,13 @@
   id: FoodSTOil
   suffix: Stalker, Food, Ingredient
   components:
+    # ST:OW begin
+    - type: STBulkBuyable
+      maxQuantity: 10
+    - type: Stack
+      stackType: STOWFoodOilStack
+      count: 1
+    # ST:OW end
     - type: STWeight
       self: 0.5
     - type: Item

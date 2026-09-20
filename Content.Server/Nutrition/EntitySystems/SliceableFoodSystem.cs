@@ -15,6 +15,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Content.Shared.Destructible;
+using Content.Shared.Stacks; // ST:OW
 
 namespace Content.Server.Nutrition.EntitySystems;
 
@@ -28,6 +29,7 @@ public sealed class SliceableFoodSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedStackSystem _stackSystem = default!; // ST:OW
     public override void Initialize()
     {
         base.Initialize();
@@ -82,17 +84,40 @@ public sealed class SliceableFoodSystem : EntitySystem
         if (!TryComp<UtensilComponent>(usedItem, out var utensil) || (utensil.Types & UtensilType.Knife) == 0)
             return false;
 
-        var sliceVolume = solution.Volume / FixedPoint2.New(entity.Comp2.TotalCount);
-        for (int i = 0; i < entity.Comp2.TotalCount; i++)
+        // ST:OW begin
+        var stackCount = 1;
+
+        if (TryComp<StackComponent>(entity.Owner, out var sourceStack))
+        {
+            stackCount = _stackSystem.GetCount(
+                (entity.Owner, sourceStack));
+        }
+
+        var sliceVolume =
+            solution.Volume /
+            FixedPoint2.New(entity.Comp2.TotalCount);
+
+        for (var i = 0; i < entity.Comp2.TotalCount; i++)
         {
             var sliceUid = Slice(entity, user);
 
             var lostSolution =
-                _solutionContainer.SplitSolution(soln.Value, sliceVolume);
+                _solutionContainer.SplitSolution(
+                    soln.Value,
+                    sliceVolume);
 
             // Fill new slice
             FillSlice(sliceUid, lostSolution);
+            
+            if (stackCount > 1 &&
+                TryComp<StackComponent>(sliceUid, out var sliceStack))
+            {
+                _stackSystem.SetCount(
+                    (sliceUid, sliceStack),
+                    stackCount);
+            }
         }
+        // ST:OW end
 
         _audio.PlayPvs(entity.Comp2.Sound, entity.Comp1.Coordinates, AudioParams.Default.WithVolume(-2));
         var ev = new SliceFoodEvent();

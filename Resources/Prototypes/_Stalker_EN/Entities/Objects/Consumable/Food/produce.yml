@@ -8,6 +8,8 @@
   id: FoodSTTomato
   suffix: Stalker, Food, Ingredient
   components:
+    - type: STBulkBuyable # ST:OW
+      maxQuantity: 10
     - type: STWeight
       self: 0.25
     - type: Item
@@ -72,6 +74,8 @@
   description: A humble delivery vessel for starch.
   suffix: Stalker, Food, Ingredient
   components:
+  - type: STBulkBuyable # ST:OW
+    maxQuantity: 10
   - type: FlavorProfile
     flavors:
     - potatoes
@@ -111,6 +115,8 @@
   id: FoodSTCarrot
   suffix: Stalker, Food, Ingredient
   components:
+    - type: STBulkBuyable # ST:OW
+      maxQuantity: 10
     - type: STWeight
       self: 0.25
     - type: Item
@@ -151,6 +157,8 @@
   id: FoodSTCabbage
   suffix: Stalker, Food, Ingredient
   components:
+    - type: STBulkBuyable # ST:OW
+      maxQuantity: 10
     - type: STWeight
       self: 0.25
     - type: Item
@@ -185,6 +193,8 @@
   id: FoodSTCorn
   suffix: Stalker, Food, Ingredient
   components:
+  - type: STBulkBuyable # ST:OW
+    maxQuantity: 10
   - type: STWeight
     self: 0.1
   - type: Item
@@ -220,6 +230,8 @@
   id: FoodSTOnion
   suffix: Stalker, Food, Ingredient
   components:
+    - type: STBulkBuyable # ST:OW
+      maxQuantity: 10
     - type: STWeight
       self: 0.1
     - type: Item
@@ -256,6 +268,8 @@
   id: FoodSTBeet
   suffix: Stalker, Food, Ingredient
   components:
+    - type: STBulkBuyable # ST:OW
+      maxQuantity: 10
     - type: STWeight
       self: 0.1
     - type: Item

@@ -16,6 +16,7 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
+using Content.Shared.Stacks; // ST:OW
 
 namespace Content.Shared.Crafting;
 public sealed class SharedCraftingSystem : EntitySystem
@@ -29,6 +30,7 @@ public sealed class SharedCraftingSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly SharedStackSystem _stackSystem = default!; // ST:OW
 
     private List<LightCraftingPrototype> _lightPrototypes = default!;
     private List<string> _tags = new();
@@ -367,20 +369,82 @@ public sealed class SharedCraftingSystem : EntitySystem
     }
 
     // ST:OW begin
+    private int GetAvailableCount(EntityUid entity)
+    {
+        if (!TryComp<StackComponent>(entity, out var stack))
+            return 1;
+
+        if (stack.Unlimited)
+            return int.MaxValue;
+
+        return _stackSystem.GetCount((entity, stack));
+    }
+
+    private int GetLightCraftAmount(EntityUid firstEntity, EntityUid secondEntity, StepDetails step)
+    {
+        var amount = int.MaxValue;
+        var consumesIngredient = false;
+
+        if (!step.KeepFirst)
+        {
+            amount = Math.Min(amount, GetAvailableCount(firstEntity));
+            consumesIngredient = true;
+        }
+
+        if (!step.KeepSecond)
+        {
+            amount = Math.Min(amount, GetAvailableCount(secondEntity));
+            consumesIngredient = true;
+        }
+
+        if (!consumesIngredient || amount == int.MaxValue)
+            return 1;
+
+        return amount;
+    }
+
+    private bool WillLightCraftRemoveEntity(EntityUid entity, bool keep, int amount)
+    {
+        if (keep)
+            return false;
+
+        if (!TryComp<StackComponent>(entity, out var stack))
+            return true;
+
+        if (stack.Unlimited)
+            return false;
+
+        return _stackSystem.GetCount((entity, stack)) <= amount;
+    }
+
+    private void ConsumeLightCraftIngredient(EntityUid entity, bool keep, int amount)
+    {
+        if (keep)
+            return;
+
+        if (TryComp<StackComponent>(entity, out var stack))
+        {
+            _stackSystem.TryUse((entity, stack), amount);
+            return;
+        }
+
+        QueueDel(entity);
+    }
+
     private void LightCraft(EntityUid user, EntityUid target, EntityUid used, LightCraftingPrototype prototype,
         StepDetails step)
     {
         if (_net.IsClient || TerminatingOrDeleted(target) || TerminatingOrDeleted(used))
-        {
             return;
-        }
 
         var targetId = GetItemProtoID(target);
         var usedId = GetItemProtoID(used);
+
+        // Check if ingredients match the recipe forwards or backwards
         var forward = IsEqualOrHasParent(targetId, step.FirstIngredient, step.ExactFirst) &&
                       IsEqualOrHasParent(usedId, step.SecondIngredient, step.ExactSecond);
 
-        var reverse = !forward && 
+        var reverse = !forward &&
                       IsEqualOrHasParent(usedId, step.FirstIngredient, step.ExactFirst) &&
                       IsEqualOrHasParent(targetId, step.SecondIngredient, step.ExactSecond);
 
@@ -390,17 +454,27 @@ public sealed class SharedCraftingSystem : EntitySystem
         var firstEntity = forward ? target : used;
         var secondEntity = forward ? used : target;
 
+        // Do not use exact same entity if they have the same ID
         if (firstEntity == secondEntity && step.FirstIngredient.Id == step.SecondIngredient.Id)
             return;
 
-        EntityUid? replacementSource = !step.KeepFirst ? firstEntity 
-            : !step.KeepSecond ? secondEntity 
+        // Determine how many "crafts" can be completed
+        var craftAmount = GetLightCraftAmount(firstEntity, secondEntity, step);
+        if (craftAmount <= 0)
+            return;
+
+        var firstWillBeRemoved = WillLightCraftRemoveEntity(firstEntity, step.KeepFirst, craftAmount);
+        var secondWillBeRemoved = WillLightCraftRemoveEntity(secondEntity, step.KeepSecond, craftAmount);
+
+        EntityUid? replacementSource = firstWillBeRemoved ? firstEntity
+            : secondWillBeRemoved ? secondEntity
             : null;
 
         var positionSource = replacementSource ?? target;
         var spawnCoords = _transform.GetMapCoordinates(positionSource);
         var previousRotation = Transform(positionSource).LocalRotation;
 
+        // Track where items should go
         BaseContainer? storageContainer = null;
         StorageComponent? storageComp = null;
         ItemStorageLocation storageLocation = default;
@@ -417,64 +491,74 @@ public sealed class SharedCraftingSystem : EntitySystem
                 out storageContainer,
                 out storageComp,
                 out storageLocation);
-            
+
             if (!hadStorageLocation)
             {
                 wasHeld = TryComp(user, out hands) &&
                           _hands.IsHolding((user, hands), replacementSource.Value, out originalHand);
             }
-            
+
+            // Remove item from slot before deleting
             if (hadStorageLocation && storageContainer != null)
             {
                 _container.Remove(replacementSource.Value, storageContainer, force: true);
             }
-            
             else if (wasHeld && _container.TryGetContainingContainer(replacementSource.Value, out var handContainer))
             {
                 _container.Remove(replacementSource.Value, handContainer, force: true);
             }
         }
 
-        if (!step.KeepFirst)
-            QueueDel(firstEntity);
-        
-        if (!step.KeepSecond && (step.KeepFirst || secondEntity != firstEntity))
-            QueueDel(secondEntity);
+        // Consume the exact number of items used
+        ConsumeLightCraftIngredient(firstEntity, step.KeepFirst, craftAmount);
 
-        var firstResult = true;
+        if (secondEntity != firstEntity)
+            ConsumeLightCraftIngredient(secondEntity, step.KeepSecond, craftAmount);
+
+        var isFirstResult = true;
 
         foreach (var item in prototype.Results)
         {
-            var newEntity = Spawn(item, spawnCoords);
-            Transform(newEntity).LocalRotation = previousRotation;
+            var remaining = craftAmount;
 
-            if (firstResult && replacementSource != null)
+            while (remaining > 0)
             {
-                if (hadStorageLocation && storageContainer != null && storageComp != null)
-                {
-                    _storage.InsertAt(
-                        (storageContainer.Owner, storageComp),
-                        newEntity,
-                        storageLocation,
-                        out _,
-                        playSound: false,
-                        stackAutomatically: false);
-                }
-                else if (wasHeld && hands != null && originalHand != null)
-                {
-                    _hands.TryPickup(
-                        user,
-                        newEntity,
-                        originalHand,
-                        checkActionBlocker: false,
-                        animate: false,
-                        handsComp: hands);
-                }
-            }
+                var newEntity = Spawn(item, spawnCoords);
+                Transform(newEntity).LocalRotation = previousRotation;
 
-            firstResult = false;
-            
-            _sawmill.Debug("Id: {Entity}", newEntity);
+                var spawnedAmount = 1;
+
+                if (TryComp<StackComponent>(newEntity, out var resultStack))
+                {
+                    spawnedAmount = Math.Min(remaining, _stackSystem.GetMaxCount(resultStack));
+                    _stackSystem.SetCount((newEntity, resultStack), spawnedAmount);
+                }
+
+                remaining -= spawnedAmount;
+
+                if (isFirstResult && replacementSource != null)
+                {
+                    if (hadStorageLocation && storageContainer != null && storageComp != null)
+                    {
+                        _storage.InsertAt(
+                            (storageContainer.Owner, storageComp),
+                            newEntity,
+                            storageLocation,
+                            out _,
+                            playSound: false,
+                            stackAutomatically: false);
+                    }
+                    else if (wasHeld && hands != null && originalHand != null)
+                    {
+                        _hands.TryPickup(user, newEntity, originalHand, checkActionBlocker: false, animate: false,
+                            handsComp: hands);
+                    }
+                }
+
+                isFirstResult = false;
+
+                _sawmill.Debug("Crafted a total of {Amount} {Entity}", spawnedAmount, newEntity);
+            }
         }
     }
     // ST:OW end
@@ -625,7 +709,7 @@ public sealed class SharedCraftingSystem : EntitySystem
                 }
                 else
                 {
-                    ReduceStackCount(entity, amountToRemove);
+                    _stackSystem.ReduceCount((entity, stack), amountToRemove); // ST:OW
                 }
             }
             else
@@ -635,21 +719,13 @@ public sealed class SharedCraftingSystem : EntitySystem
             }
         }
     }
-    private void ReduceStackCount(EntityUid entity, int amount)
-    {
-        if (TryComp<Stacks.StackComponent>(entity, out var stack))
-        {
-            stack.Count -= amount;
-            Dirty(entity, stack);
-        }
-    }
 
     private void DropItemAtUserPosition(EntityUid user, EntityUid item)
     {
-    var userPosition = Transform(user).Coordinates;
-    _transform.SetCoordinates(item, userPosition);
-    // You might want to add additional logic here to make the item visible and interactable
-}
+        var userPosition = Transform(user).Coordinates;
+        _transform.SetCoordinates(item, userPosition);
+        // You might want to add additional logic here to make the item visible and interactable
+    }
     private void HandleDoAfter(EntityUid uid, StorageComponent component, CraftDoAfterEvent args)
     {
         if (args.Cancelled)

@@ -403,6 +403,11 @@
   description: Кусок сырого мяса мутировавшей собаки, содержит опасный для человеческого организма токсин, но если ты голодал последние несколько дней, токсины не кажутся такими уж смертельными.
   suffix: Stalker, еда
   components:
+  # ST:OW begin
+  - type: Stack
+    stackType: STOWDogMeatStack
+    count: 1
+  # ST:OW end
   - type: STWeight
     self: 0.8
   - type: Sprite

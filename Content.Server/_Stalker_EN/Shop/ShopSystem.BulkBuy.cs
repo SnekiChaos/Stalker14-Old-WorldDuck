@@ -2,6 +2,7 @@ using Content.Shared._Stalker.Shop;
 using Content.Shared._Stalker_EN.Shop;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
+using Content.Shared.Stacks; // ST:OW
 
 namespace Content.Server._Stalker.Shop;
 
@@ -45,8 +46,10 @@ public sealed partial class ShopSystem
             if (component.Permit.HasValue)
             {
                 _proto.TryIndex(component.Permit.Value, out var permitPrototype);
-                _popup.PopupEntity(Loc.GetString("st-shop-requires-permit", ("permit", permitPrototype?.Name ?? "unknown")), uid);
+                _popup.PopupEntity(
+                    Loc.GetString("st-shop-requires-permit", ("permit", permitPrototype?.Name ?? "unknown")), uid);
             }
+
             return;
         }
 
@@ -61,11 +64,37 @@ public sealed partial class ShopSystem
         balance -= totalCost;
 
         var coords = Transform(buyer).Coordinates;
-        for (var i = 0; i < count; i++)
+
+        // ST:OW begin
+        if (proto.TryGetComponent<StackComponent>(out var prototypeStack, _entity.ComponentFactory))
         {
-            var product = Spawn(listing.ProductEntity, coords);
-            _hands.PickupOrDrop(buyer, product);
+            var remaining = count;
+            var maxStackSize = _stack.GetMaxCount(prototypeStack);
+
+            while (remaining > 0)
+            {
+                var product = Spawn(listing.ProductEntity, coords);
+                var amountToConsume = 1;
+
+                if (TryComp<StackComponent>(product, out var productStack))
+                {
+                    amountToConsume = Math.Min(remaining, maxStackSize);
+                    _stack.SetCount((product, productStack), amountToConsume);
+                }
+
+                remaining -= amountToConsume;
+                _hands.PickupOrDrop(buyer, product);
+            }
         }
+        else
+        {
+            for (var i = 0; i < count; i++)
+            {
+                var product = Spawn(listing.ProductEntity, coords);
+                _hands.PickupOrDrop(buyer, product);
+            }
+        }
+        // ST:OW end
 
         listing.PurchaseAmount += count;
         component.CurrentBalance = balance;
