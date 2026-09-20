@@ -30,11 +30,13 @@
     - type: Ammo
       muzzleFlash: null
     - type: BoltBallistics
-      speedMultiplier: 0.8 # 0.6x slower
+      speedMultiplier: 1 # Normal speed
       maxFlightTime: 0.8 # 800 milliseconds
     - type: BoltBreakOnImpact
-      breakChance: 0.10 # 10%
+      breakChance: 0.5 # 5%
       brokenPrototype: STBrokenBolt
+    - type: RepositoryItem
+      categoryName: repository-magazines-category
 
 - type: entity
   parent: BaseArrow
@@ -67,8 +69,10 @@
     - type: Ammo
       muzzleFlash: null
     - type: BoltBallistics
-      speedMultiplier: 1 # Normal speed
+      speedMultiplier: 1.15 # Slightly faster than normal
       maxFlightTime: 0.8 # 800 milliseconds
     - type: BoltBreakOnImpact
-      breakChance: 0.10
+      breakChance: 0.5 # 5%
       brokenPrototype: STBrokenBoltAP
+    - type: RepositoryItem
+      categoryName: repository-magazines-category

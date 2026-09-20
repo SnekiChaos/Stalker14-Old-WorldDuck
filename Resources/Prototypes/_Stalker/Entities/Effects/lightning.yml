@@ -19,6 +19,8 @@
       canArc: true
       lightningPrototype: SourceLightning
       maxTotalArc: 6 #StalkerEN
+    - type: TimedDespawn # ST:OW
+      lifetime: 0.5 # ST:OW - Half a second
     - type: PointLight
       enabled: true
       color: "#f2fdff"

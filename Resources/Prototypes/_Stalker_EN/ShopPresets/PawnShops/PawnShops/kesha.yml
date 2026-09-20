@@ -272,9 +272,9 @@
         # ST:OW - Begin
         #STClothingOuterArmorLightPlateVestBaseStalker: 1250
         #ClothingOuterArmor6B2: 2000
+        #ClothingHeadHelmetInfantry: 400
+        STOWClothingHeadHelmetT2PVEStalker: 1000
         # ST:OW - End
-        ClothingHeadHelmetInfantry: 400
-        STClothingHeadHelmetMakeshiftTacticalT3: 1000
         ClothingOuterArmorSpark: 1750
         ClothingOuterArmorZaryaStalkerModifedType2: 2500
         ClothingOuterArmorZaryaStalkerModifedType1: 3800

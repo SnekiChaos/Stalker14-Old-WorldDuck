@@ -39,4 +39,6 @@
     sprite: _Stalker/Objects/Clothing/mask/gasmask_dolg2.rsi
   - type: Clothing
     sprite: _Stalker/Objects/Clothing/mask/gasmask_dolg2.rsi
-
+  - type: HideLayerClothing # ST:OW
+    slots: 
+      - HeadTop

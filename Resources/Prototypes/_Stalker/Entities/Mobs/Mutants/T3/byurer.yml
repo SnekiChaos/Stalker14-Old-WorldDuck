@@ -34,7 +34,7 @@
         Blunt: 5
   - type: HTN
     rootTask:
-      task: SimpleRangedHostileCompound
+      task: STBurerHostileCompound # ST:OW
     blackboard:
       VisionRadius: !type:Single
         20
