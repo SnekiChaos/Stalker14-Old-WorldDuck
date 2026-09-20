@@ -3948,5 +3948,16 @@
   id: 438
   time: '2026-09-20T10:04:09.328749+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/77
+- author: kuro964
+  changes:
+  - message: Most cooking ingredients are now mass purchasable
+    type: Tweak
+  - message: Most cooking  ingredients now stack
+    type: Tweak
+  - message: It is now possible to combine stacks of ingredients
+    type: Tweak
+  id: 439
+  time: '2026-09-20T21:28:10.228932+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/78
 Name: Stalker
 Order: -1
