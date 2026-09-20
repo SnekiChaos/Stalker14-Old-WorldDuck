@@ -3916,5 +3916,26 @@
   id: 436
   time: '2026-09-19T23:58:39.424461+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/74
+- author: kuro964
+  changes:
+  - message: Added O2 tank sprites for suit storage
+    type: Add
+  - message: Fixed old helmet prototypes being sold at Kesha
+    type: Fix
+  - message: Fixed most missing translations
+    type: Fix
+  - message: Crossbow and bolts properly sort in stash
+    type: Fix
+  - message: Burers now execute critical players
+    type: Fix
+  - message: Duty gas mask no longer makes you bald
+    type: Fix
+  - message: Source lightning tweaked
+    type: Tweak
+  - message: Crossbow bolts have a 5% chance to break instead of 10%
+    type: Tweak
+  id: 437
+  time: '2026-09-20T09:02:55.577408+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/75
 Name: Stalker
 Order: -1
