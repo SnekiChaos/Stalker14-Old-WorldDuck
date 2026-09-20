@@ -68,8 +68,6 @@
         Shock: 0.1
         Caustic: 0.1 # ST:OW Change End : WHY THE FUCK DOES IT STILL DIE TO MEGA MULCHERS GOD??
         Mutant: 1
-    flatReductions:
-      Compression: 1
   - type: Destructible
     thresholds:
     - trigger:
