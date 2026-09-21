@@ -3959,5 +3959,14 @@
   id: 439
   time: '2026-09-20T21:28:10.228932+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/78
+- author: kuro964
+  changes:
+  - message: Head bags added to mili free kits
+    type: Add
+  - message: Made ammo boxes in mili premium vendor more expensive
+    type: Tweak
+  id: 440
+  time: '2026-09-21T12:04:07.824332+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/79
 Name: Stalker
 Order: -1
