@@ -114,6 +114,7 @@
         STRadioHeadset: 50
         STModuleSilencerSniperT1: 10
         STModuleSniperSightT1: 10
+        ClothingHeatBagStalker: 50
 
     - category: clothing
       entries:
