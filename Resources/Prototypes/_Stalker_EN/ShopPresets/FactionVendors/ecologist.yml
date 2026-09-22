@@ -194,6 +194,7 @@
         MedkitScience: 175
         MedkitMilitary: 100
         Defibrillator: 700
+        DefibrillatorCompact: 1400
         MedkitElite: 500
         MedkitLAR: 650
         STPillboxProbud: 350
