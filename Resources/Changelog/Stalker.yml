@@ -3968,5 +3968,12 @@
   id: 440
   time: '2026-09-21T12:04:07.824332+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/79
+- author: Allias12
+  changes:
+  - message: Adds Compact defib to Ecology
+    type: Add
+  id: 441
+  time: '2026-09-22T05:24:54.192397+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/80
 Name: Stalker
 Order: -1
