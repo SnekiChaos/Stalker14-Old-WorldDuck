@@ -3975,5 +3975,30 @@
   id: 441
   time: '2026-09-22T05:24:54.192397+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/80
+- author: kuro964
+  changes:
+  - message: Optimized crossbow bolts
+    type: Fix
+  - message: Optimized garland & source anomalies (again)
+    type: Fix
+  - message: Emissions no longer cause anomalies to spawn near blockers
+    type: Fix
+  - message: Optimized anomaly generation
+    type: Fix
+  - message: Optimized garbage piles and scientific equipment
+    type: Fix
+  - message: Mutant corpses no longer trigger anomalies endlessly
+    type: Fix
+  - message: Mutant corpses no longer lunge at you
+    type: Fix
+  - message: Fixed T2 cache localization
+    type: Tweak
+  - message: Lowered burden anomalies in Garbage & Cordon
+    type: Tweak
+  - message: Made beer anomaly slightly more common
+    type: Tweak
+  id: 442
+  time: '2026-09-22T15:33:41.741139+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/81
 Name: Stalker
 Order: -1
