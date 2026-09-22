@@ -15,6 +15,7 @@ public sealed class ZoneAnomalyTriggerCollideSystem : EntitySystem
     private const float TriggerCheckInterval = 0.2f;
 
     private float _triggerCheckAccumulator;
+    private readonly List<EntityUid> _entitiesToRemove = new(); // ST:OW
 
     public override void Initialize()
     {
@@ -42,7 +43,20 @@ public sealed class ZoneAnomalyTriggerCollideSystem : EntitySystem
         {
             if (trigger.InAnomaly.Count == 0)
                 continue;
-
+            // ST:OW begin
+            _entitiesToRemove.Clear();
+            
+            foreach (var entity in trigger.InAnomaly)
+            {
+                if (!Exists(entity))
+                    _entitiesToRemove.Add(entity);
+            }
+            
+            foreach (var entity in _entitiesToRemove)
+                trigger.InAnomaly.Remove(entity);
+            
+            if (trigger.InAnomaly.Count != 0)
+            // ST:OW end    
             _anomaly.TryActivate((uid, anomaly), trigger.InAnomaly);
         }
     }

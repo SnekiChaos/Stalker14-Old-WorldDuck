@@ -45,6 +45,12 @@ namespace Content.Shared._Stalker.Jumpscare
 
         [DataField]
         public float UpdateCooldown;
+        
+        [DataField]
+        public float TargetSearchInterval = 0.2f; // ST:OW
+
+        [AutoPausedField]
+        public TimeSpan NextTargetSearchTime; // ST:OW
 
         [DataField, AutoPausedField]
         public TimeSpan SlowdownTime = TimeSpan.FromSeconds(0.1f);

@@ -10,43 +10,6 @@ namespace Content.Server._Stalker.Anomaly.Generation.Jobs;
 
 public sealed partial class STAnomalyGenerationJob
 {
-    #region Anomaly
-
-    private HashSet<Vector2i> GetAnomalyTiles(STAnomalyGeneratorAnomalyEntry anomalyEntry, Vector2i coords)
-    {
-        return GetBoxElements(coords, GetAnomalySize(anomalyEntry));
-    }
-
-    private int GetAnomalySize(STAnomalyGeneratorAnomalyEntry anomalyEntry)
-    {
-        return _anomalySizes[anomalyEntry.ProtoId];
-    }
-
-    #endregion
-
-    #region Box2i
-
-    private HashSet<Vector2i> GetBoxElements(Vector2i coords, int radius)
-    {
-        if (radius == 0)
-            return new HashSet<Vector2i> { coords };
-
-        var set = new HashSet<Vector2i>();
-        var box2 = new Box2i(coords - radius, coords + radius + 1);
-
-        for (var x = box2.Left; x < box2.Right; x++)
-        {
-            for (var y = box2.Bottom; y < box2.Top; y++)
-            {
-                set.Add(new Vector2i(x, y));
-            }
-        }
-
-        return set;
-    }
-
-    #endregion
-
     #region Turf
 
     private bool IsTileBlocked(TileRef turf, CollisionGroup mask, Func<EntityUid, bool>? predicate = null, float minIntersectionArea = 0.1f)

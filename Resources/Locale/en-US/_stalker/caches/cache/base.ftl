@@ -5,8 +5,8 @@ ent-STCacheT1 = box
     .suffix = ST, Cache, T1
     
 # T2
-ent-STCache1T2 = cabinet
-    .desc = An decrepit and dusty cabinet. There may be something worthwhile inside.
+ent-STCache1T2 = box
+    .desc = A rusty metal box that has withstood the test of time. There may be something worthwhile inside.
     .suffix = ST, Cache, T2
 ent-STCache2T2 = { ent-STCache1T2 }
     .desc = { ent-STCache1T2.desc }

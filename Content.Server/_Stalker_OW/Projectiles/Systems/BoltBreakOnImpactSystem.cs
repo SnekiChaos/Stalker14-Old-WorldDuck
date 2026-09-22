@@ -13,6 +13,7 @@ public sealed class BoltBreakOnImpactSystem : EntitySystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly BoltBallisticsSystem _ballistics = default!;
 
     public override void Initialize()
     {
@@ -27,7 +28,7 @@ public sealed class BoltBreakOnImpactSystem : EntitySystem
         ref ProjectileHitEvent args)
     {
         // Ballistic calcs stop after impact
-        RemComp<BoltBallisticsComponent>(ent);
+        _ballistics.StopFlight(ent.Owner);
 
         HandleBreakage(ent);
     }

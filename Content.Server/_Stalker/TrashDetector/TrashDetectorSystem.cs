@@ -9,6 +9,7 @@ using Content.Shared.Interaction;
 using Content.Server._Stalker.TrashSerchable;
 using Content.Shared.TrashDetector;
 using Content.Shared.Hands.EntitySystems; // ST:OW
+using Robust.Shared.Timing; // ST:OW
 
 namespace Content.Server.TrashDetector
 {
@@ -21,18 +22,13 @@ namespace Content.Server.TrashDetector
         [Dependency] internal readonly IMapManager _mapManager = default!;
         [Dependency] protected readonly AudioSystem Audio = default!;
         [Dependency] private readonly SharedHandsSystem _hands = default!;
+        [Dependency] private readonly IGameTiming _timing = default!; // ST:OW
 
         public override void Initialize()
         {
             base.Initialize();
             SubscribeLocalEvent<TrashDetectorComponent, BeforeRangedInteractEvent>(OnUseInHand);
             SubscribeLocalEvent<TrashDetectorComponent, GetTrashDoAfterEvent>(OnDoAfter);
-        }
-
-        public override void Update(float frameTime)
-        {
-            base.Update(frameTime);
-
         }
 
         public void OnUseInHand(EntityUid uid, TrashDetectorComponent comp, BeforeRangedInteractEvent args)
@@ -48,7 +44,7 @@ namespace Content.Server.TrashDetector
                 return;
             if (TryComp<TrashSerchableComponent>(target, out var trash) && trash != null)
             {
-                if (trash.TimeBeforeNextSearch < 0f)
+                if (_timing.CurTime >= trash.NextSearchTime)
                 {
                     var doAfterArgs = new DoAfterArgs(_entityManager, user, comp.SearchTime, new GetTrashDoAfterEvent(),
                         uid, target: target, used: uid)
@@ -74,38 +70,55 @@ namespace Content.Server.TrashDetector
         {
             var coords = Transform(user).Coordinates;
             var spawned = Spawn(protoId, coords);
-            _hands.TryPickupAnyHand(user, spawned); // if fails, stays on ground
+            _hands.TryPickupAnyHand(user, spawned);
         }
 
         public void OnDoAfter(EntityUid uid, TrashDetectorComponent comp, GetTrashDoAfterEvent args)
         {
-            if (args.Handled || args.Cancelled || args.Args.Target == null ||
-                !TryComp<TrashSerchableComponent>(args.Args.Target.Value, out var trash))
+            if (args.Handled || args.Cancelled || args.Args.Target is not { } target ||
+                !TryComp<TrashSerchableComponent>(target, out var trash))
             {
+                return;
+            }
+
+            var user = args.Args.User;
+            var curTime = _timing.CurTime;
+
+            if (curTime < trash.NextSearchTime)
+            {
+                args.Handled = true;
+                _popupSystem.PopupEntity(
+                    "This pile has already been checked recently.",
+                    user,
+                    PopupType.LargeCaution);
                 return;
             }
 
             args.Handled = true;
-
-            trash.TimeBeforeNextSearch = 900f;
+            trash.NextSearchTime = curTime + trash.SearchCooldown;
 
             if (!_random.Prob(comp.Probability))
             {
-                _popupSystem.PopupEntity("The device does not make a sound", uid, PopupType.LargeCaution);
+                _popupSystem.PopupEntity(
+                    "The device does not make a sound.",
+                    user,
+                    PopupType.LargeCaution);
                 return;
             }
 
-            _popupSystem.PopupEntity("The device beeps", uid, PopupType.LargeCaution);
+            _popupSystem.PopupEntity(
+                "The device beeps.",
+                user,
+                PopupType.LargeCaution);
 
             var hardCap = Math.Max(1, comp.RollsHardCap);
             var minRolls = Math.Clamp(comp.RollsMin, 1, hardCap);
             var maxRolls = Math.Clamp(comp.RollsMax, minRolls, hardCap);
-
             var rolls = _random.Next(minRolls, maxRolls + 1);
 
             for (var i = 0; i < rolls; i++)
             {
-                SpawnLootToHandsOrGround(uid, comp.Loot);
+                SpawnLootToHandsOrGround(user, comp.Loot);
             }
         }
         // ST:OW end

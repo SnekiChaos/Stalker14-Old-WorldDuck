@@ -68,9 +68,11 @@ public sealed partial class STAnomalyGeneratorSystem : EntitySystem
 
     private void OnRoundStart(RoundStartedEvent ev)
     {
-        var query = EntityQueryEnumerator<MapComponent, STAnomalyGeneratorTargetComponent>();
+        var query = EntityManager.AllEntityQueryEnumerator<MapComponent, STAnomalyGeneratorTargetComponent>(); // ST:OW
         while (query.MoveNext(out var entityUid, out var mapComponent, out var targetComponent))
         {
+            if (mapComponent.MapId == MapId.Nullspace || !_map.IsMapInitialized(mapComponent.MapId)) // ST:OW
+                continue;
             if (!_prototype.TryIndex(targetComponent.OptionsId, out var options))
             {
                 Log.Error($"Can't start generation on {ToPrettyString(entityUid)}!");
@@ -102,22 +104,32 @@ public sealed partial class STAnomalyGeneratorSystem : EntitySystem
 
         Log.Info($"Generation {job.AsTask.Id} for {mapId} started");
 
-        await job.AsTask;
+        // ST:OW begin
+        try
+        {
+            await job.AsTask;
 
-        if (job.Exception is not null)
-            throw job.Exception;
+            if (job.Exception is not null)
+                throw job.Exception;
 
-        var count = job.Result!.SpawnedAnomalies.Count;
-        var total = options.TotalCount;
-        var percent = float.Round(count / (float) total * 100f, 2);
+            var count = job.Result!.SpawnedAnomalies.Count;
+            var total = options.TotalCount;
+            var percent = float.Round(count / (float) total * 100f, 2);
 
-        Log.Info($"Generation {job.AsTask.Id} end, count: {count}\\{total} ({percent}%)");
+            Log.Info($"Generation {job.AsTask.Id} end, count: {count}\\{total} ({percent}%)");
 
-        if (count == 0)
-            Log.Warning($"Generation {job.AsTask.Id} for {mapId} produced 0 anomalies out of {total} requested!");
+            if (count == 0)
+                Log.Warning($"Generation {job.AsTask.Id} for {mapId} produced 0 anomalies out of {total} requested!");
 
-        Data.Comp.MapGeneratedAnomalies[mapId] = job.Result!.SpawnedAnomalies;
-        return job.Result!;
+            Data.Comp.MapGeneratedAnomalies[mapId] = job.Result!.SpawnedAnomalies;
+            return job.Result!;
+        }
+        finally
+        {
+            _jobs.Remove(job);
+            cancelToken.Dispose();
+        }
+        // ST:OW end
     }
 
     // stalker-en-changes: made public for emission anomaly regeneration

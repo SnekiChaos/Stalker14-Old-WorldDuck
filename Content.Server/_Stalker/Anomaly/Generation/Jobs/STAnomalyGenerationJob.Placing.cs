@@ -6,30 +6,57 @@ namespace Content.Server._Stalker.Anomaly.Generation.Jobs;
 
 public sealed partial class STAnomalyGenerationJob
 {
-    private async Task<EntityUid> TrySpawn(STAnomalyGeneratorAnomalyEntry anomalyEntry, Vector2i coords)
+    // ST:OW begin
+    private async Task<EntityUid> TrySpawn(
+        STAnomalyGeneratorAnomalyEntry anomalyEntry,
+        TileKey key)
     {
-        if (!_tileCoordinates.TryGetValue(coords, out var tileRef) || !await PlaceFree(anomalyEntry, coords))
+        if (!_tileCoordinates.TryGetValue(key, out var tileRef))
             return EntityUid.Invalid;
 
-        var gridComp = _entityManager.EnsureComponent<MapGridComponent>(tileRef.GridUid);
-        var targetCoords = _map.GridTileToWorld(tileRef.GridUid, gridComp, tileRef.GridIndices);
+        if (!await PlaceFree(anomalyEntry, key))
+            return EntityUid.Invalid;
+    
+        if (!_entityManager.TryGetComponent<MapGridComponent>(
+                key.Grid,
+                out var gridComp))
+        {
+            return EntityUid.Invalid;
+        }
+
+        var targetCoords = _map.GridTileToWorld(
+            key.Grid,
+            gridComp,
+            tileRef.GridIndices);
 
         return _entityManager.Spawn(anomalyEntry.ProtoId, targetCoords);
     }
 
-    private async Task<bool> PlaceFree(STAnomalyGeneratorAnomalyEntry anomalyEntry, Vector2i coords)
+    private async Task<bool> PlaceFree(
+        STAnomalyGeneratorAnomalyEntry anomalyEntry,
+        TileKey key)
     {
-        var tiles = GetAnomalyTiles(anomalyEntry, coords);
-        foreach (var tile in tiles)
+        var radius = _anomalySizes[anomalyEntry.ProtoId];
+        
+        for (var x = key.Indices.X - radius;
+             x <= key.Indices.X + radius;
+             x++)
         {
-            await MakeOperation();
+            for (var y = key.Indices.Y - radius;
+                 y <= key.Indices.Y + radius;
+                 y++)
+            {
+                await MakeOperation();
 
-            if (_tileCoordinates.ContainsKey(tile))
-                continue;
+                var footprintKey =
+                    new TileKey(key.Grid, new Vector2i(x, y));
 
-            return false;
+                if (!_tileCoordinates.ContainsKey(footprintKey))
+                    return false;
+            }
         }
 
         return true;
     }
 }
+// ST:OW end

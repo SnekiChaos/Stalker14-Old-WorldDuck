@@ -3,6 +3,8 @@ using System.Numerics;
 using Content.Shared._Stalker_OW.Projectiles.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Projectiles;
+using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
@@ -20,18 +22,53 @@ public sealed class BoltGroundHitEvent : EntityEventArgs
 public sealed class BoltBallisticsSystem : EntitySystem
 {
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    
+    private readonly HashSet<EntityUid> _activeBolts = new();
+    private readonly List<EntityUid> _finishedBolts = new();
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<GunComponent, AmmoShotEvent>(OnAmmoShot);
+    }
+
+    private void OnAmmoShot(Entity<GunComponent> gun, ref AmmoShotEvent args)
+    {
+        foreach (var uid in args.FiredProjectiles)
+        {
+            if (!TryComp<BoltBallisticsComponent>(uid, out var ballistics) ||
+                !TryComp<PhysicsComponent>(uid, out var physics))
+            {
+                continue;
+            }
+
+            BeginFlight(uid, ballistics, physics);
+            _activeBolts.Add(uid);
+        }
+    }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<BoltBallisticsComponent, PhysicsComponent, ProjectileComponent>();
+        if (_activeBolts.Count == 0)
+            return;
 
-        while (query.MoveNext(out var uid, out var ballistics, out var physics, out var projectile))
+        _finishedBolts.Clear();
+        foreach (var uid in _activeBolts)
         {
+            if (!TryComp<BoltBallisticsComponent>(uid, out var ballistics) ||
+                !TryComp<PhysicsComponent>(uid, out var physics) ||
+                !TryComp<ProjectileComponent>(uid, out var projectile))
+            {
+                _finishedBolts.Add(uid);
+                continue;
+            }
+
             if (projectile.Weapon == null)
             {
                 ResetFlight(ballistics);
+                _finishedBolts.Add(uid);
                 continue;
             }
 
@@ -41,8 +78,14 @@ public sealed class BoltBallisticsSystem : EntitySystem
             ballistics.FlightTimeRemaining -= frameTime;
 
             if (ballistics.FlightTimeRemaining <= 0f)
+            {
                 FinishFlight(uid, ballistics, physics, projectile);
+                _finishedBolts.Add(uid);
+            }
         }
+
+        foreach (var uid in _finishedBolts)
+            _activeBolts.Remove(uid);
     }
 
     /// <summary>
@@ -85,6 +128,19 @@ public sealed class BoltBallisticsSystem : EntitySystem
         component.FlightTimeForCurrentLaunch = Math.Clamp(requestedTime, 0f, component.MaxFlightTime);
         if (component.InFlight)
             component.FlightTimeRemaining = component.FlightTimeForCurrentLaunch;
+    }
+
+    /// <summary>
+    /// Stops flight w/o removing components
+    /// Allows recovered bolts to be fired again
+    /// </summary>
+    public void StopFlight(EntityUid uid, BoltBallisticsComponent? component = null)
+    {
+        if (!Resolve(uid, ref component, false))
+            return;
+
+        ResetFlight(component);
+        _activeBolts.Remove(uid);
     }
 
     /// <summary>

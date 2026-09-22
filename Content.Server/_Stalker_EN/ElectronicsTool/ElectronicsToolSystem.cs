@@ -8,6 +8,7 @@ using Content.Shared.Popups;
 using Content.Shared.Interaction;
 using Content.Server._Stalker_EN.ElectronicsSearchable;
 using Content.Shared.TrashDetector;
+using Robust.Shared.Timing; // ST:OW
 
 namespace Content.Server._Stalker_EN.ElectronicsTool
 {
@@ -19,17 +20,13 @@ namespace Content.Server._Stalker_EN.ElectronicsTool
         [Dependency] internal readonly IEntityManager _entityManager = default!;
         [Dependency] internal readonly IMapManager _mapManager = default!;
         [Dependency] protected readonly AudioSystem Audio = default!;
+        [Dependency] private readonly IGameTiming _timing = default!; // ST:OW
+
         public override void Initialize()
         {
             base.Initialize();
             SubscribeLocalEvent<ElectronicsToolComponent, BeforeRangedInteractEvent>(OnUseInHand);
             SubscribeLocalEvent<ElectronicsToolComponent, GetTrashDoAfterEvent>(OnDoAfter);
-        }
-
-        public override void Update(float frameTime)
-        {
-            base.Update(frameTime);
-
         }
 
         public void OnUseInHand(EntityUid uid, ElectronicsToolComponent comp, BeforeRangedInteractEvent args)
@@ -45,7 +42,7 @@ namespace Content.Server._Stalker_EN.ElectronicsTool
                 return;
             if (TryComp<ElectronicsSearchableComponent>(target, out var electronics) && electronics != null)
             {
-                if (electronics.TimeBeforeNextSearch < 0f)
+                if (_timing.CurTime >= electronics.NextSearchTime)
                 {
                     var doAfterArgs = new DoAfterArgs(_entityManager, user, comp.SearchTime, new GetTrashDoAfterEvent(), uid, target: target, used: uid)
                     {
@@ -71,18 +68,25 @@ namespace Content.Server._Stalker_EN.ElectronicsTool
                 return;
             var target = args.Args.Target.Value;
             // ST:OW begin
-            trash.TimeBeforeNextSearch = 900f;
+            if (_timing.CurTime < trash.NextSearchTime)
+            {
+                args.Handled = true;
+                _popupSystem.PopupEntity("This was searched recently.", args.Args.User, PopupType.LargeCaution);
+                return;
+            }
+            args.Handled = true;
+            trash.NextSearchTime = _timing.CurTime + trash.SearchCooldown;
 
             if (!_random.Prob(comp.Probability))
             {
-                _popupSystem.PopupEntity("Nothing of value.", uid, PopupType.LargeCaution);
+                _popupSystem.PopupEntity("Nothing of value.", args.Args.User, PopupType.LargeCaution);
                 args.Handled = true;
                 return;
             }
 
-            _popupSystem.PopupEntity("Something was found!", uid, PopupType.LargeCaution);
+            _popupSystem.PopupEntity("Something was found!", args.Args.User, PopupType.LargeCaution);
 
-            var xform = Transform(uid);
+            var xform = Transform(args.Args.User);
             var coords = xform.Coordinates;
 
             var hardCap = Math.Max(1, comp.RollsHardCap);

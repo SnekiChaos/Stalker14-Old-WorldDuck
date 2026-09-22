@@ -34,6 +34,13 @@ public sealed class JumpscareSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var comp))
         {
+            // ST:OW begin
+            if (!TryComp<MobStateComponent>(uid, out var state) || !_mobState.IsAlive(uid, state))
+            {
+                CancelLunge(comp);
+                continue;
+            }
+            // ST:OW end
             if (comp.NextTimeUpdate > _timing.CurTime)
                 continue;
             comp.NextTimeUpdate = _timing.CurTime + TimeSpan.FromSeconds(comp.UpdateCooldown);
@@ -75,6 +82,16 @@ public sealed class JumpscareSystem : EntitySystem
         }
     }
 
+    // ST:OW begin
+    private static void CancelLunge(JumpscareComponent comp)
+    {
+        comp.MovingToJumpTarget = false;
+        comp.OnCoolDown = true;
+        comp.CurrentStep = 0;
+        comp.NextStepTime = null;
+    }
+    // ST:OW end
+    
     private void MoveTowardsTarget(EntityUid uid, JumpscareComponent comp, float frameTime)
     {
         if (_timing.CurTime < comp.NextStepTime)

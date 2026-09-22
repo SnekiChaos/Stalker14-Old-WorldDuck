@@ -165,7 +165,7 @@
         tags:
           - AnomalyGarlandActivationTarget
       distance: 5 # ST:OW - Chaining range
-      maxTargets: 2 # ST:OW - Only track onto two other garlands
+      maxTargets: 2 # ST:OW - Track onto two other garlands
       stopRecursiveActivation: true
     - type: ZoneAnomalyEffectPlaySound
       sound: /Audio/_Stalker/Effects/electra_blast.ogg

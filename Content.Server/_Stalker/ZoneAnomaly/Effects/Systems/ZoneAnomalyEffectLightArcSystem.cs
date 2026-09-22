@@ -12,8 +12,6 @@ namespace Content.Server._Stalker.ZoneAnomaly.Effects.Systems;
 
 public sealed class ZoneAnomalyEffectLightArcSystem : EntitySystem
 {
-    private const int MaxIterations = 12;
-
     [Dependency] private readonly PredictedBatterySystem _battery = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly LightningSystem _lightning = default!;
@@ -29,31 +27,31 @@ public sealed class ZoneAnomalyEffectLightArcSystem : EntitySystem
         // ST:OW begin
         foreach (var trigger in args.Triggers)
         {
-            if (!HasComp<ZoneAnomalyEffectActivatorComponent>(trigger))
-                continue;
-
-            _lightning.ShootLightning(effect, trigger, effect.Comp.Lighting);
+            if (HasComp<ZoneAnomalyEffectActivatorComponent>(trigger))
+                _lightning.ShootLightning(effect, trigger, effect.Comp.Lighting);
         }
-        // ST:OW end
-        var i = 0;
+        
+        var targetCount = 0;
+        var maxTargets = effect.Comp.MaxTargets;
+        // Seek out things in range to arc to
         var entities = _lookup.GetEntitiesInRange(Transform(effect).Coordinates, effect.Comp.Distance);
+
         foreach (var entity in entities)
         {
-            if (i > MaxIterations)
+            // Only target the max number of targets this pulse
+            if (maxTargets > 0 && targetCount >= maxTargets)
                 break;
 
-            // We don't need to shoot all the entities
-            if(!_whitelistSystem.IsWhitelistPass(effect.Comp.Whitelist, entity))
+            // Skip over non-whitelisted entities and prevent multi-firing on nested entities
+            // e.g. Hit the player and not all the items they're wearing
+            if (!_whitelistSystem.IsWhitelistPass(effect.Comp.Whitelist, entity) || IsValidRecursively(effect, entity))
                 continue;
-
-            // Fixes 10 million shots being fired at one entity due to it containing targets
-            if (IsValidRecursively(effect, entity))
-                continue;
+            // ST:OW end
 
             TryRecharge(effect, entity);
             _lightning.ShootLightning(effect, entity, effect.Comp.Lighting);
 
-            i++;
+            targetCount++;
         }
     }
 

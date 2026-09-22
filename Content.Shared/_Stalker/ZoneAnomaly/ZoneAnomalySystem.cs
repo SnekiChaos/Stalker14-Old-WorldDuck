@@ -3,6 +3,8 @@ using Content.Shared._Stalker_EN.ZoneAnomaly.Effects.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Timing;
+using Content.Shared.Mobs; // ST:OW
+using Content.Shared.Mobs.Components; // ST:OW
 
 namespace Content.Shared._Stalker.ZoneAnomaly;
 
@@ -89,6 +91,14 @@ public sealed class ZoneAnomalySystem : SharedZoneAnomalySystem
         TryRemoveEntity(anomaly, args.OtherEntity);
     }
 
+    // ST:OW begin
+    private bool InvalidTrigger(EntityUid entity)
+    {
+        return !Exists(entity) ||
+               (TryComp<MobStateComponent>(entity, out var state) && state.CurrentState == MobState.Dead);
+    }
+    // ST:OW end
+    
     public bool TryActivate(Entity<ZoneAnomalyComponent> anomaly, EntityUid? trigger = null)
     {
         var list = new HashSet<EntityUid>();
@@ -103,7 +113,15 @@ public sealed class ZoneAnomalySystem : SharedZoneAnomalySystem
         if (anomaly.Comp.State != ZoneAnomalyState.Idle)
             return false;
 
-        anomaly.Comp.Triggers.UnionWith(triggers);
+        // ST:OW begin
+        foreach (var entity in triggers)
+        {
+            if (!InvalidTrigger(entity))
+                anomaly.Comp.Triggers.Add(entity);
+        }
+        if (triggers.Count != 0 && anomaly.Comp.Triggers.Count == 0)
+            return false;
+        // ST:OW end
 
         if (anomaly.Comp.PreparingDelay.TotalSeconds == 0)
         {
@@ -118,6 +136,15 @@ public sealed class ZoneAnomalySystem : SharedZoneAnomalySystem
 
     public void Activate(Entity<ZoneAnomalyComponent> anomaly)
     {
+        // ST:OW begin
+        var hadTriggers = anomaly.Comp.Triggers.Count != 0;
+        anomaly.Comp.Triggers.RemoveWhere(InvalidTrigger);
+        if (hadTriggers && anomaly.Comp.Triggers.Count == 0)
+        {
+            CalmDown(anomaly);
+            return;
+        } 
+        // ST:OW end
         SetState(anomaly, ZoneAnomalyState.Activated);
 
         var ev = new ZoneAnomalyActivateEvent(anomaly, anomaly.Comp.Triggers);

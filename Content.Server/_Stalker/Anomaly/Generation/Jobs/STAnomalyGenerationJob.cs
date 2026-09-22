@@ -38,8 +38,37 @@ public sealed partial class STAnomalyGenerationJob : Job<STAnomalyGenerationJobD
 
     private readonly FrozenDictionary<EntProtoId, int> _anomalySizes;
 
-    private readonly Dictionary<Vector2i, TileRef> _tileCoordinates = new();
-    private readonly Dictionary<Vector2i, STAnomalyGenerationTile> _tileCoordinatesSpawn = new();
+    // ST:OW begin
+    private readonly record struct TileKey(EntityUid Grid, Vector2i Indices);
+    private readonly Dictionary<TileKey, TileRef> _tileCoordinates = new();
+    private readonly List<TileKey> _spawnTiles = new();
+    private readonly Dictionary<TileKey, int> _spawnTileIndices = new();
+
+    private void AddSpawnTile(TileKey key)
+    {
+        if (!_spawnTileIndices.TryAdd(key, _spawnTiles.Count))
+            return;
+
+        _spawnTiles.Add(key);
+    }
+
+    private void RemoveSpawnTile(TileKey key)
+    {
+        if (!_spawnTileIndices.Remove(key, out var index))
+            return;
+
+        var lastIndex = _spawnTiles.Count - 1;
+        
+        if (index != lastIndex)
+        {
+            var movedKey = _spawnTiles[lastIndex];
+            _spawnTiles[index] = movedKey;
+            _spawnTileIndices[movedKey] = index;
+        }
+
+        _spawnTiles.RemoveAt(lastIndex);
+    }
+    // ST:OW end
 
     public STAnomalyGenerationJob(STAnomalyGenerationOptions options,  double maxTime, CancellationToken cancellation = default) : base(maxTime, cancellation)
     {
@@ -94,36 +123,64 @@ public sealed partial class STAnomalyGenerationJob : Job<STAnomalyGenerationJobD
     {
         var result = new STAnomalyGenerationJobData();
 
+        // ST:OW begin
+        // Do not scan the map if no anomaly spawns are possible
+        if (Options.TotalCount <= 0 || Options.AnomalyEntries.Count == 0)
+            return result;
+        
         await LoadTiles();
         await RemoveByBlockers();
 
         for (var i = 0; i < Options.TotalCount; i++)
         {
+            // Potential spawn locations shrink as anomalies are placed and blockers are applied
+            // So once there are no more valid spots, spawn in all the anomalies available
+            if (_spawnTiles.Count == 0)
+                break;
+
             var anomaly = GetRandomAnomalyEntry(Options, _random);
             if (anomaly is null)
                 continue;
 
-            for (var j = 0; j < 100; j++)
+            var entry = anomaly.Value;
+            var radius = _anomalySizes[entry.ProtoId];
+
+            // Bound amount of work spent trying to place an anomaly
+            // Prevents infinite looping
+            for (var attempt = 0; attempt < 100; attempt++)
             {
                 await MakeOperation();
 
-                var (coords, tile) = _random.Pick(_tileCoordinatesSpawn);
-                var entity = await TrySpawn(anomaly.Value, coords);
+                if (_spawnTiles.Count == 0)
+                    break;
+
+                var key = _spawnTiles[_random.Next(_spawnTiles.Count)];
+                var entity = await TrySpawn(entry, key);
 
                 if (entity == EntityUid.Invalid)
                     continue;
 
-                // Remove spawn coords from maps
-                _tileCoordinatesSpawn.Remove(coords);
-                _tileCoordinates.Remove(coords);
-
-                // Anomaly don't spawn in anomalies
-                foreach (var takenCoord in GetAnomalyTiles(anomaly.Value, coords))
-                {
-                    _tileCoordinatesSpawn.Remove(takenCoord);
-                }
-
                 result.SpawnedAnomalies.Add(entity);
+
+                // Occupied tiles are not considered valid for subsequent anomaly spawns
+                _tileCoordinates.Remove(key);
+
+                // Prevent anomalies from spawning within another anomaly's occupied radius
+                for (var x = key.Indices.X - radius;
+                     x <= key.Indices.X + radius;
+                     x++)
+                {
+                    for (var y = key.Indices.Y - radius;
+                         y <= key.Indices.Y + radius;
+                         y++)
+                    {
+                        await MakeOperation();
+
+                        RemoveSpawnTile(
+                            new TileKey(key.Grid, new Vector2i(x, y)));
+                    }
+                }
+                // ST:OW end
                 break;
             }
         }
@@ -131,55 +188,59 @@ public sealed partial class STAnomalyGenerationJob : Job<STAnomalyGenerationJobD
         return result;
     }
 
-    // stalker-en-changes-start: Snapshot blocker data synchronously to fix collection modified exception.
-    // EntityQueryEnumerator is not safe across await boundaries. MakeOperation() can yield across ticks,
-    // during which other systems may modify the entity collection, causing InvalidOperationException.
+    // ST:OW begin
     private async Task RemoveByBlockers()
     {
-        var blockerAreas = new List<Box2i>();
-        var entities = _entityManager.EntityQueryEnumerator<STAnomalyGeneratorSpawnBlockerComponent, TransformComponent>();
+        var blockerAreas = new List<(EntityUid Grid, Box2i Bounds)>();
+
+        var entities = _entityManager.AllEntityQueryEnumerator<
+            STAnomalyGeneratorSpawnBlockerComponent,
+            TransformComponent>();
 
         while (entities.MoveNext(out var uid, out var blocker, out var transform))
         {
             if (_transform.GetMapId(uid) != Options.MapId)
                 continue;
 
-            var position = _transform.GetWorldPosition(transform);
-            var coordinates = new Vector2i((int) Math.Floor(position.X), (int) Math.Floor(position.Y));
+            var tile = _turf.GetTileRef(transform.Coordinates);
+            if (tile is null)
+                continue;
+
+            var coordinates = tile.Value.GridIndices;
             var size = blocker.Size;
-            blockerAreas.Add(new Box2i(coordinates.X - size, coordinates.Y - size, coordinates.X + size + 1, coordinates.Y + size + 1));
+
+            var bounds = new Box2i(
+                coordinates.X - size,
+                coordinates.Y - size,
+                coordinates.X + size + 1,
+                coordinates.Y + size + 1);
+
+            blockerAreas.Add((tile.Value.GridUid, bounds));
         }
 
-        var coordinatesToRemove = new List<Vector2i>();
-
-        foreach (var box2 in blockerAreas)
+        foreach (var (grid, bounds) in blockerAreas)
         {
-            for (var x = box2.Left; x < box2.Right; x++)
+            for (var x = bounds.Left; x < bounds.Right; x++)
             {
-                for (var y = box2.Bottom; y < box2.Top; y++)
+                for (var y = bounds.Bottom; y < bounds.Top; y++)
                 {
                     await MakeOperation();
-                    var coord = new Vector2i(x, y);
 
-                    if (_tileCoordinates.ContainsKey(coord))
-                    {
-                        coordinatesToRemove.Add(coord);
-                    }
+                    var key = new TileKey(grid, new Vector2i(x, y));
+                    
+                    _tileCoordinates.Remove(key);
+                    RemoveSpawnTile(key);
                 }
             }
         }
-
-        foreach (var coord in coordinatesToRemove)
-        {
-            _tileCoordinates.Remove(coord);
-            _tileCoordinatesSpawn.Remove(coord);
-        }
     }
-    // stalker-en-changes-end
 
     private async Task LoadTiles()
     {
         var gridList = _mapManager.GetAllGrids(Options.MapId).ToList();
+
+        Func<EntityUid, bool> skipIntersection =
+            uid => _tag.HasTag(uid, TagGenerationIntersectionSkip);
 
         foreach (var grid in gridList)
         {
@@ -189,20 +250,30 @@ public sealed partial class STAnomalyGenerationJob : Job<STAnomalyGenerationJobD
             {
                 await MakeOperation();
 
-                if (_rdAreas.TryGetArea(grid.Owner, tileRef.GridIndices, out Entity<RDAreaComponent> areaUid) && _entityManager.HasComponent<STAnomalyGeneratorSpawnBlockerComponent>(areaUid))
+                if (_rdAreas.TryGetArea(
+                        grid.Owner,
+                        tileRef.GridIndices,
+                        out Entity<RDAreaComponent> areaUid) &&
+                    _entityManager.HasComponent<
+                        STAnomalyGeneratorSpawnBlockerComponent>(areaUid))
+                {
                     continue;
+                }
+
+                var key = new TileKey(tileRef.GridUid, tileRef.GridIndices);
 
                 if (TileSolidAndNotBlocked(tileRef))
                 {
-                    _tileCoordinates.TryAdd(tileRef.GridIndices, tileRef);
-                    _tileCoordinatesSpawn.TryAdd(tileRef.GridIndices, new STAnomalyGenerationTile(tileRef));
+                    _tileCoordinates.TryAdd(key, tileRef);
+                    AddSpawnTile(key);
+                    
+                    continue;
                 }
-
-                if (TileSolidAndNotBlocked(tileRef, uid => _tag.HasTag(uid, TagGenerationIntersectionSkip)))
-                {
-                    _tileCoordinates.TryAdd(tileRef.GridIndices, tileRef);
-                }
+                
+                if (TileSolidAndNotBlocked(tileRef, skipIntersection))
+                    _tileCoordinates.TryAdd(key, tileRef);
             }
+            // ST:OW end
         }
     }
 
