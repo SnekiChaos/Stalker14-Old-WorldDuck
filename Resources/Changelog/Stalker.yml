@@ -4000,5 +4000,12 @@
   id: 442
   time: '2026-09-22T15:33:41.741139+00:00'
   url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/81
+- author: kuro964
+  changes:
+  - message: Buying medkits in bulk
+    type: Fix
+  id: 443
+  time: '2026-09-23T02:31:13.642026+00:00'
+  url: https://github.com/Stalker-Old-World/Stalker14-Old-World/pull/83
 Name: Stalker
 Order: -1
