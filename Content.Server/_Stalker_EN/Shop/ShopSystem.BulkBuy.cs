@@ -68,18 +68,20 @@ public sealed partial class ShopSystem
         // ST:OW begin
         if (proto.TryGetComponent<StackComponent>(out var prototypeStack, _entity.ComponentFactory))
         {
-            var remaining = count;
-            var maxStackSize = _stack.GetMaxCount(prototypeStack);
+            // Preserve prototype's starting stack count when doing a bulk purchase
+            var startingStackCount = Math.Max(1, prototypeStack.Count);
+            var maxStackSize = Math.Max(1, _stack.GetMaxCount(prototypeStack));
+            var remaining = (long) count * startingStackCount;
 
             while (remaining > 0)
             {
                 var product = Spawn(listing.ProductEntity, coords);
-                var amountToConsume = 1;
+                var amountToConsume = Math.Min((long) startingStackCount, remaining);
 
                 if (TryComp<StackComponent>(product, out var productStack))
                 {
                     amountToConsume = Math.Min(remaining, maxStackSize);
-                    _stack.SetCount((product, productStack), amountToConsume);
+                    _stack.SetCount((product, productStack), (int) amountToConsume);
                 }
 
                 remaining -= amountToConsume;
